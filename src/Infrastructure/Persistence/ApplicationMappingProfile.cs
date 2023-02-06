@@ -11,6 +11,7 @@ namespace Infrastructure.Persistence
         {
             CreateMap<Book, GetAllBooksDTO>()
                 .ForMember(m=> m.Author, c=>c.MapFrom(s => s.Author.Name));
+            CreateMap<GetAllBooksDTO, Book>();
         }
     }
 }

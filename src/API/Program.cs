@@ -1,8 +1,7 @@
 using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-
-
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +14,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Livre_DbConnection")));
 builder.Services.AddScoped<ApplicationSeeder>();
 builder.Services.AddMediatR(typeof(Program));
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<ApplicationSeeder>();
+seeder.Seed();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -27,9 +32,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
