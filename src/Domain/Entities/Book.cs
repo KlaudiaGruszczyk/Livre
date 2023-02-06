@@ -11,5 +11,7 @@
         public string Category { get; set; }
         public string Publisher { get; set; }
 
+
+        public virtual Author? Author { get; set; }
     }
 }

@@ -1,6 +1,9 @@
-﻿namespace Application.Book.Queries.GetAllBooks
+﻿using MediatR;
+
+namespace Application.Book.Queries.GetAllBooks
 {
-    public class GetAllBooksQuery
+    public class GetAllBooksQuery : IRequest<List<GetAllBooksDTO>>
     {
+
     }
 }
