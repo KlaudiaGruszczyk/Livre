@@ -68,8 +68,7 @@ namespace Infrastructure.Persistence
                     Description = "Romeo i Julia to dramat Wiliama Szekspira wydany w 1597 roku. Źródeł dzieła można doszukiwać się w dwóch utworach Le tre parti de le Novelle del Bandello oraz Palace of Pleasure.\r\n\r\nMatka Julii Kapulet postanawia wydać córkę za Parysa (jest to krewny księcia Werony). Organizuje ona bal, na którym młodzi mają się zapoznać. Zjawia się tam też potomek zwaśnionego z nimi rodu Monteki, Romeo. Romeo i Julia zakochują się w sobie „od pierwszego wejrzenia”. Wkrótce w tajemnicy biorą ze sobą ślub. Jednak los bywa okrutny….",
                     PublishedDate = new DateTime(1597, 01, 01),
                     Category = "Literatura Klasyczna",
-                    Publisher = "Dragon",
-                    AuthorId = 1
+                    Publisher = "Dragon"
     },
                 new Book()
                 {
@@ -79,8 +78,7 @@ namespace Infrastructure.Persistence
                     Description = "Młody Tristran Thorn zrobi wszystko, byle tylko zdobyć lodowate serce pięknej Victorii - przyniesie jej nawet gwiazdę, której upadek z nieba oglądali razem pewnej nocy. By jednak to uczynić, musi wyprawić się na niezbadane ziemie po drugiej stronie starożytnego i dobrze pilnowanego muru, od którego bierze nazwę ich maleńka wioska. Za owym murem leży Kraina Czarów, gdzie nic nie jest takie, jakim je sobie wyobraził - nawet upadła gwiazda.",
                     PublishedDate = new DateTime(1999, 01, 01),
                     Category = "Science Fiction",
-                    Publisher = "Mag",
-                    AuthorId =2
+                    Publisher = "Mag"
                 }
             };
             return books;
@@ -135,9 +133,19 @@ namespace Infrastructure.Persistence
             var items = new List<UserLibrary>() 
             { 
                 new UserLibrary()
-                { }, 
+                {
+                    LibraryItemId= 1,
+                    ReadingStatus = Domain.Enums.ReadingStatus.ToRead,
+                    UserIdItem = 1,
+                    BookIdItem =2
+                }, 
                 new UserLibrary() 
-                { } 
+                {
+                    LibraryItemId= 2,
+                    ReadingStatus = Domain.Enums.ReadingStatus.ToRead,
+                    UserIdItem = 1,
+                    BookIdItem =1
+                } 
             };
             return items;
         }

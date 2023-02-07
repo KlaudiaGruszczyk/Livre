@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230207180206_Init5")]
-    partial class Init5
+    [Migration("20230207195121_Init4")]
+    partial class Init4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,9 @@ namespace API.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("AuthorId")
-                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookAuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Category")
@@ -105,29 +107,29 @@ namespace API.Migrations
 
             modelBuilder.Entity("Domain.Entities.UserLibrary", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookForeignKey")
-                        .HasColumnType("int");
-
                     b.Property<int>("LibraryItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BookIdItem")
                         .HasColumnType("int");
 
                     b.Property<int>("ReadingStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserForeignKey")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "BookId");
+                    b.Property<int?>("UserIdItem")
+                        .HasColumnType("int");
 
-                    b.HasIndex("BookForeignKey");
+                    b.HasKey("LibraryItemId");
 
-                    b.HasIndex("UserForeignKey");
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UsersLibraryItems");
                 });
@@ -135,10 +137,8 @@ namespace API.Migrations
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
                     b.HasOne("Domain.Entities.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
                 });
@@ -146,35 +146,20 @@ namespace API.Migrations
             modelBuilder.Entity("Domain.Entities.UserLibrary", b =>
                 {
                     b.HasOne("Domain.Entities.Book", "Book")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("BookForeignKey")
+                        .WithMany()
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("UserForeignKey")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Book");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Author", b =>
-                {
-                    b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Book", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,16 +6,15 @@ namespace Domain.Entities
 {
     public class UserLibrary
     {
+        [Key]
         public int LibraryItemId { get; set; }
         public ReadingStatus ReadingStatus { get; set; }
 
-        [ForeignKey("UserForeignKey")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public int? UserIdItem { get; set; }
+        //public virtual User User { get; set; }
 
-        [ForeignKey("BookForeignKey")]
-        public int? BookId { get; set; }
-        public Book Book { get; set; }
+        public int? BookIdItem { get; set; }
+        //public virtual Book Book { get; set; }
 
     }
 }

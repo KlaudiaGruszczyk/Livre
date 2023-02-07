@@ -15,11 +15,7 @@ namespace Domain.Entities
         public string Category { get; set; }
         public string Publisher { get; set; }
 
-        [AllowNull]
-        [ForeignKey("AuthorForeignKey")]
-        public int? AuthorId { get; set; }
-        public Author Author { get; set; }
-        public ICollection<UserLibrary> UsersLibraryItems { get; set; }
+        public virtual Author? Author { get; set; }
 
     }
 }

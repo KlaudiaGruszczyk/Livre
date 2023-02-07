@@ -1,5 +1,8 @@
 using Application.Book.Handlers;
+using Application.Common.Interfaces;
+using Domain.Repositories;
 using Infrastructure.Persistence;
+using Infrastructure.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); 
 builder.Services.AddScoped<ApplicationSeeder>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
 
 

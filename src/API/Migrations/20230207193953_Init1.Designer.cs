@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230207174000_Init")]
-    partial class Init
+    [Migration("20230207193953_Init1")]
+    partial class Init1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("Domain.Entities.Author", b =>
                 {
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Bio")
@@ -45,13 +45,13 @@ namespace API.Migrations
 
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
-                    b.Property<int>("BookId")
+                    b.Property<int?>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AuthorForeignKey")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int>("BookAuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Category")
@@ -75,14 +75,14 @@ namespace API.Migrations
 
                     b.HasKey("BookId");
 
-                    b.HasIndex("AuthorForeignKey");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -110,7 +110,7 @@ namespace API.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
+                    b.Property<int?>("BookId")
                         .HasColumnType("int");
 
                     b.Property<int>("BookForeignKey")
@@ -137,10 +137,8 @@ namespace API.Migrations
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
                     b.HasOne("Domain.Entities.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorForeignKey")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
                 });
@@ -162,11 +160,6 @@ namespace API.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Domain.Entities.Book", b =>

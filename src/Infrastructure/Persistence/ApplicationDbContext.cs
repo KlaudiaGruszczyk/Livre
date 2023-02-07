@@ -28,10 +28,6 @@ namespace Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-              builder.Entity<Book>()
-           .HasOne(p => p.Author)
-           .WithMany(b => b.Books)
-           .HasForeignKey("AuthorIdForeignKey");
 
             builder.Entity<Book>()
              .Property(x => x.BookId)
@@ -50,18 +46,6 @@ namespace Infrastructure.Persistence
                 .Property(x => x.AuthorId)
                 .IsRequired().ValueGeneratedNever();
 
-            builder.Entity<UserLibrary>()
-            .HasKey(ul => new { ul.UserId, ul.BookId });
-
-            builder.Entity<UserLibrary>()
-                .HasOne(ul => ul.User)
-                .WithMany(u => u.UsersLibraryItems)
-                .HasForeignKey("UserForeignKey");
-
-            builder.Entity<UserLibrary>()
-                .HasOne(ul => ul.Book)
-                .WithMany(b => b.UsersLibraryItems)
-                .HasForeignKey("BookForeignKey");
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

@@ -13,8 +13,6 @@ namespace Domain.Entities
         public string Email { get; set; }
         public UserRole Role { get; set; }
 
-        public ICollection<UserLibrary> UsersLibraryItems { get; set; }
-
     }
 }
 
