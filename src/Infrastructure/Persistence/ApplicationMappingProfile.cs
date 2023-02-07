@@ -9,9 +9,9 @@ namespace Infrastructure.Persistence
     {
         public ApplicationMappingProfile()
         {
-            CreateMap<Book, GetAllBooksDTO>()
-                .ForMember(m=> m.Author, c=>c.MapFrom(s => s.Author.Name));
-            CreateMap<GetAllBooksDTO, Book>();
+            CreateMap<Author, GetAllBooksDTO>()
+                .ForMember(m=> m.Author, c=>c.MapFrom(s => s.Name));
+            CreateMap<Book, GetAllBooksDTO>();
         }
     }
 }

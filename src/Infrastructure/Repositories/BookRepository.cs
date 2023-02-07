@@ -36,7 +36,7 @@ namespace Infrastructure.Repositories
         {
             var baseQuery = await _dbContext.Books
                 .Include(r => r.Title)
-                .Include(r => r.Author)
+                .Include(r => r.Author.Name)
                 .ToListAsync();
 
             return baseQuery;

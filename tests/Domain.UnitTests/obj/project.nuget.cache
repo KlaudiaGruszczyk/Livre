@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "drezWEQnwPkpobBY0MgjBv3TDOsYtJ+eG0oiqQiclMEhxDoTcFZgw6F1yG1++Ak8A6wBQEmlZqsfWqRWBujJqw==",
+  "dgSpecHash": "q+RUzU0QR5XjTNagsrvaI2qRIakvGNIdWu5NjIT3F2fy/u1un1aPYvqUL7pPhZ9f5bv+kSzcE6ZMC5KG0xk8kA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\kgrus\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

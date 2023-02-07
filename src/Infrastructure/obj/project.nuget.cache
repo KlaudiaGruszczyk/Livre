@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RdG+hmrkqS3t3ABzDDfsfiO4iGPHrTx0BwoQ5xIsFVGxvuDAydQxBh5xq0p+/QcOSSElcdLavs9eJw6uT87ujA==",
+  "dgSpecHash": "P5KYOQMLlj+r6WLT9fcjcPoK9jl0KShkk7iUaNnPbSXg1DD26wkPw/2t4qIPNT/qZvTegP/CktAlwrQcQanNGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\kgrus\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",

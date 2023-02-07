@@ -1,6 +1,8 @@
+using Application.Book.Handlers;
 using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +13,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Livre_DbConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Livre_DbConnection"), b => b.MigrationsAssembly("API")));
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); 
 builder.Services.AddScoped<ApplicationSeeder>();
-builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
