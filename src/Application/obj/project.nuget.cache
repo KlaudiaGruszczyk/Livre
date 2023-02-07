@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "BxvppPx/Ig9wL/nFDrUJsuC4vRWl7hmxEwBjANayA15hQ4i3XufD1SDJMbx19KQlKqtYOro9WR5WoSuYY8CDPw==",
+  "dgSpecHash": "aaorMTpFxGl0DDHd6cd32AJihB/jMnHxWsVLyuOKOYwlWnFwq0qmEm/fznZoUEeytPp1qj79R7X7OjGOenYyYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\kgrus\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",

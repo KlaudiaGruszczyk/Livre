@@ -31,6 +31,9 @@
               "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Application\\Application.csproj": {
                 "projectPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Application\\Application.csproj"
               },
+              "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\Domain.csproj"
+              },
               "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Infrastructure\\Infrastructure.csproj"
               }
@@ -50,6 +53,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
@@ -173,6 +180,10 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -248,6 +259,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
             },
             "MediatR": {
               "target": "Package",
@@ -328,6 +343,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[11.0.0, )"
+            },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
             },
             "MediatR": {
               "target": "Package",

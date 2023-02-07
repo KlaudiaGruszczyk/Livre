@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tmvr+13P+nGy2kBCWEt2e3s5DlSIaubCbF/bGG0WiHhLCVB7vZvCMNb3W+LHLc6rQtgemC4RU9IKgyPr7aFhEQ==",
+  "dgSpecHash": "k3pImqJlz0G1UH1jv2lyqIYAlpwoPoRGba1fhP651KA/IEn++i9VafPpZPfIyy8znhIIAra7+s9aZdrhNUe/Bg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\kgrus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\kgrus\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\duende.identityserver\\6.0.4\\duende.identityserver.6.0.4.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\duende.identityserver.aspnetidentity\\6.0.4\\duende.identityserver.aspnetidentity.6.0.4.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\duende.identityserver.entityframework\\6.0.4\\duende.identityserver.entityframework.6.0.4.nupkg.sha512",

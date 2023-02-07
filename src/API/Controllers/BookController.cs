@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Book.Queries.GetAllBooks;
 using MediatR;
+using Domain.Repositories;
 
 namespace API.Controllers
 {
@@ -12,10 +13,12 @@ namespace API.Controllers
     public class BookController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IBookRepository _bookRepository;
 
-        public BookController(IMediator mediator)
+        public BookController(IMediator mediator, IBookRepository bookRepository)
         {
             _mediator= mediator;
+            _bookRepository= bookRepository;
         }
 
         [HttpGet("GetAllBooks")]
