@@ -48,6 +48,10 @@ namespace API.Migrations
                     b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("BookAuthorId")
                         .HasColumnType("int");
 

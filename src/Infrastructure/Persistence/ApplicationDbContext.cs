@@ -51,10 +51,10 @@ namespace Infrastructure.Persistence
 
             base.OnModelCreating(builder);
         }
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public async Task<int> SaveChangesAsync()
         {
 
-            return await base.SaveChangesAsync(cancellationToken);
+            return await base.SaveChangesAsync();
         }
     }
 }

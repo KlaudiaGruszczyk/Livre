@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P5KYOQMLlj+r6WLT9fcjcPoK9jl0KShkk7iUaNnPbSXg1DD26wkPw/2t4qIPNT/qZvTegP/CktAlwrQcQanNGA==",
+  "dgSpecHash": "TlCj5vUpO2WQKZ9xBZ/jCIEprPG1EPCKuzg/c9oHVNrsFgLVr47WjTbuXMUab9lxy4zJU7zKq+3hDNb7AesBWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\kgrus\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\kgrus\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.0.0\\mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\kgrus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

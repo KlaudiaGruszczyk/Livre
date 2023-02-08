@@ -1,4 +1,5 @@
-﻿using Application.Book.Queries.GetAllBooks;
+﻿
+using Application.Book.Queries.GetAllBooks;
 using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -17,42 +18,31 @@ namespace Infrastructure.Repositories
             _mapper= mapper;
             _dbContext= dbContext;
         }
-        public Task<Book> Add(Book book)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<Book?> BookDetails(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Book> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Book>> GetAllBooks()
+        async Task<List<T>> IBookRepository.GetAllBooks<T>()
         {
             var baseQuery = await _dbContext.Books
-                .Include(r => r.Title)
-                .Include(r => r.Author.Name)
-                .ToListAsync();
+                .Select(item => new GetAllBooksDTO()
+                {
+                    Title = item.Title,
+                    Author = item.AuthorName
+                }).ToListAsync();
 
-            return baseQuery;
+            return baseQuery.Cast<T>().ToList();
         }
 
-        public Task<Book?> GetBookById(int id)
+
+            public Task<Book?> GetBookById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Book?>> GetBookByTitle(string Name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Book> Update(Book book)
+        public Task<List<Book?>> GetBookByTitle(string Name)
         {
             throw new NotImplementedException();
         }

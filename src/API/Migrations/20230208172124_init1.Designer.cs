@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230207194545_Init3")]
-    partial class Init3
+    [Migration("20230208172124_init1")]
+    partial class init1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,10 @@ namespace API.Migrations
 
                     b.Property<int?>("AuthorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BookAuthorId")
                         .HasColumnType("int");
@@ -110,26 +114,16 @@ namespace API.Migrations
                     b.Property<int>("LibraryItemId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("BookIdItem")
                         .HasColumnType("int");
 
                     b.Property<int>("ReadingStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("UserIdItem")
                         .HasColumnType("int");
 
                     b.HasKey("LibraryItemId");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UsersLibraryItems");
                 });
@@ -141,35 +135,6 @@ namespace API.Migrations
                         .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("Domain.Entities.UserLibrary", b =>
-                {
-                    b.HasOne("Domain.Entities.Book", "Book")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Book", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
                 });
 #pragma warning restore 612, 618
         }

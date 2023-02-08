@@ -10,7 +10,7 @@ namespace Application.Common.Interfaces
        DbSet<User> Users { get; }
        DbSet<Author> Authors { get; }
        DbSet<UserLibrary> UsersLibraryItems { get; }
-       Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+       Task<int> SaveChangesAsync();
 
     }
 }
