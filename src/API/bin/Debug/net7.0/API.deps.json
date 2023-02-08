@@ -1062,6 +1062,8 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "BCrypt.Net-Core": "1.6.0",
           "Domain": "1.0.0",
+          "MediatR.Contracts": "1.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.2",
           "Microsoft.EntityFrameworkCore": "7.0.2",
           "Swashbuckle.AspNetCore": "6.4.0"

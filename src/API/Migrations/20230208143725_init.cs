@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,17 +40,32 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UsersLibraryItems",
+                columns: table => new
+                {
+                    LibraryItemId = table.Column<int>(type: "int", nullable: false),
+                    ReadingStatus = table.Column<int>(type: "int", nullable: false),
+                    UserIdItem = table.Column<int>(type: "int", nullable: true),
+                    BookIdItem = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersLibraryItems", x => x.LibraryItemId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
                 {
                     BookId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BookAuthorId = table.Column<int>(type: "int", nullable: false),
+                    AuthorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PublishedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Publisher = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AuthorId = table.Column<int>(type: "int", nullable: false)
+                    AuthorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,65 +74,26 @@ namespace API.Migrations
                         name: "FK_Books_Authors_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Authors",
-                        principalColumn: "AuthorId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UsersLibraryItems",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: false),
-                    LibraryItemId = table.Column<int>(type: "int", nullable: false),
-                    ReadingStatus = table.Column<int>(type: "int", nullable: false),
-                    UserForeignKey = table.Column<int>(type: "int", nullable: false),
-                    BookForeignKey = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UsersLibraryItems", x => new { x.UserId, x.BookId });
-                    table.ForeignKey(
-                        name: "FK_UsersLibraryItems_Books_BookForeignKey",
-                        column: x => x.BookForeignKey,
-                        principalTable: "Books",
-                        principalColumn: "BookId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UsersLibraryItems_Users_UserForeignKey",
-                        column: x => x.UserForeignKey,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AuthorId");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
                 table: "Books",
                 column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsersLibraryItems_BookForeignKey",
-                table: "UsersLibraryItems",
-                column: "BookForeignKey");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsersLibraryItems_UserForeignKey",
-                table: "UsersLibraryItems",
-                column: "UserForeignKey");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UsersLibraryItems");
-
-            migrationBuilder.DropTable(
                 name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "UsersLibraryItems");
 
             migrationBuilder.DropTable(
                 name: "Authors");

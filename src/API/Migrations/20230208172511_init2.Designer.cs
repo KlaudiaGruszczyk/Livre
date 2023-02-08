@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230207193555_Init")]
-    partial class Init
+    [Migration("20230208172511_init2")]
+    partial class init2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,8 +48,12 @@ namespace API.Migrations
                     b.Property<int?>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BookAuthorId")
                         .HasColumnType("int");
@@ -107,29 +111,19 @@ namespace API.Migrations
 
             modelBuilder.Entity("Domain.Entities.UserLibrary", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BookForeignKey")
-                        .HasColumnType("int");
-
                     b.Property<int>("LibraryItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BookIdItem")
                         .HasColumnType("int");
 
                     b.Property<int>("ReadingStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserForeignKey")
+                    b.Property<int?>("UserIdItem")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "BookId");
-
-                    b.HasIndex("BookForeignKey");
-
-                    b.HasIndex("UserForeignKey");
+                    b.HasKey("LibraryItemId");
 
                     b.ToTable("UsersLibraryItems");
                 });
@@ -138,40 +132,9 @@ namespace API.Migrations
                 {
                     b.HasOne("Domain.Entities.Author", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("Domain.Entities.UserLibrary", b =>
-                {
-                    b.HasOne("Domain.Entities.Book", "Book")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("BookForeignKey")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("UsersLibraryItems")
-                        .HasForeignKey("UserForeignKey")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Book", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Navigation("UsersLibraryItems");
                 });
 #pragma warning restore 612, 618
         }

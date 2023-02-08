@@ -22,7 +22,7 @@ namespace Application.Book.Handlers
         }
         public async Task<IEnumerable<GetAllBooksDTO>> Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
         {
-            var baseQuery = await _bookRepository.GetAllBooks();
+            var baseQuery = await _bookRepository.GetAllBooks<GetAllBooksDTO>();
             return _mapper.Map<IEnumerable<GetAllBooksDTO>>(baseQuery);
             
             
