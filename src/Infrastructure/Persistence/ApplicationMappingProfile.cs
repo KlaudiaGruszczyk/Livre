@@ -1,11 +1,11 @@
-﻿using Application.Authors.Commands.CreateAuthor;
-using Application.Authors.Queries.GetAllAuthors;
-using Application.Authors.Queries.GetAuthorById;
-using Application.Authors.Queries.GetAuthorByName;
-using Application.Book.Commands.CreateBook;
-using Application.Book.Queries.GetAllBooks;
-using Application.Book.Queries.GetBookById;
-using Application.Book.Queries.GetBookByKeyWord;
+﻿using Application.AuthorsCQRS.Commands.CreateAuthor;
+using Application.AuthorsCQRS.Queries.GetAllAuthors;
+using Application.AuthorsCQRS.Queries.GetAuthorById;
+using Application.AuthorsCQRS.Queries.GetAuthorByName;
+using Application.BooksCQRS.Commands.CreateBook;
+using Application.BooksCQRS.Queries.GetAllBooks;
+using Application.BooksCQRS.Queries.GetBookById;
+using Application.BooksCQRS.Queries.GetBookByKeyWord;
 using AutoMapper;
 using Domain.Entities;
 

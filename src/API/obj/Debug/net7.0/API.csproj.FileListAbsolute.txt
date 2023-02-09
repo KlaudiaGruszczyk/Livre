@@ -17,6 +17,7 @@ C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\Azure.Identity.dll
+C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\BCrypt.Net-Core.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\Duende.IdentityServer.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\Duende.IdentityServer.AspNetIdentity.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\Duende.IdentityServer.EntityFramework.dll
@@ -111,5 +112,3 @@ C:\Users\kgrus\Desktop\LIVRE\src\API\obj\Debug\net7.0\refint\API.dll
 C:\Users\kgrus\Desktop\LIVRE\src\API\obj\Debug\net7.0\API.pdb
 C:\Users\kgrus\Desktop\LIVRE\src\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\kgrus\Desktop\LIVRE\src\API\obj\Debug\net7.0\ref\API.dll
-C:\Users\kgrus\Desktop\LIVRE\src\API\bin\Debug\net7.0\BCrypt.Net-Core.dll
-C:\Users\kgrus\Desktop\LIVRE\src\API\obj\Debug\net7.0\API.MvcApplicationPartsAssemblyInfo.cs

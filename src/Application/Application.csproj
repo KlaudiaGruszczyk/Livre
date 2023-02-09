@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Authors\Queries\AuthorDetails\**" />
-    <Compile Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
-    <Content Remove="Authors\Queries\AuthorDetails\**" />
-    <Content Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
-    <EmbeddedResource Remove="Authors\Queries\AuthorDetails\**" />
-    <EmbeddedResource Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
-    <None Remove="Authors\Queries\AuthorDetails\**" />
-    <None Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
+    <Compile Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
+    <Compile Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <Content Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
+    <Content Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <EmbeddedResource Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
+    <EmbeddedResource Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <None Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
+    <None Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,8 +34,6 @@
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Models\" />
     <Folder Include="Common\Security\" />
-    <Folder Include="User\Commands\" />
-    <Folder Include="User\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
