@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Authors\Queries\AuthorDetails\**" />
+    <Compile Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
+    <Content Remove="Authors\Queries\AuthorDetails\**" />
+    <Content Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
+    <EmbeddedResource Remove="Authors\Queries\AuthorDetails\**" />
+    <EmbeddedResource Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
+    <None Remove="Authors\Queries\AuthorDetails\**" />
+    <None Remove="Authors\Queries\GetAllBooksFromAuthor\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
@@ -18,20 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Authors\Commands\CreateAuthor\" />
-    <Folder Include="Authors\Commands\DeleteAuthor\" />
-    <Folder Include="Authors\Commands\UpdateAuthor\" />
-    <Folder Include="Authors\Queries\GetAllBooksFromAuthor\" />
-    <Folder Include="Authors\Queries\GetAllAuthors\" />
-    <Folder Include="Authors\Queries\GetAuthorById\" />
-    <Folder Include="Authors\Queries\GetAuthorByName\" />
-    <Folder Include="Authors\Queries\AuthorDetails\" />
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Models\" />
     <Folder Include="Common\Security\" />
-    <Folder Include="User\" />
+    <Folder Include="User\Commands\" />
+    <Folder Include="User\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

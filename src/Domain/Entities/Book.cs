@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class Book
     {

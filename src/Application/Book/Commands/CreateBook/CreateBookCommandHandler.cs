@@ -11,12 +11,12 @@ namespace Application.Book.Commands.CreateBook
             _dbContext = dbContext;
         }
 
-        public async Task<int> Handle (CreateBookCommand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateBookCommand command, CancellationToken cancellationToken)
         {
             var book = new Domain.Entities.Book();
 
             book.BookId = command.BookId;
-           
+
             book.Title = command.Title;
             book.BookAuthorId = command.BookAuthorId;
             book.AuthorName = command.AuthorName;
@@ -27,10 +27,10 @@ namespace Application.Book.Commands.CreateBook
 
             _dbContext.Books.Add(book);
             await _dbContext.SaveChangesAsync();
-                return (int)book.BookId;
+            return (int)book.BookId;
 
 
-            }
         }
     }
+}
 

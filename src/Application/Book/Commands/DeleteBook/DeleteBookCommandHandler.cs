@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Book.Commands.CreateBook
 {
-    public class DeleteBookCommandHandler :IRequestHandler<DeleteBookCommand, int>
+    public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, int>
     {
         private readonly IApplicationDbContext _dbContext;
 
@@ -19,7 +19,7 @@ namespace Application.Book.Commands.CreateBook
             if (book == null) return default;
             _dbContext.Books.Remove(book);
             await _dbContext.SaveChangesAsync();
-            return  (int)book.BookId;
+            return (int)book.BookId;
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using Application.Book.Queries.GetAllBooks;
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Repositories;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Book.Queries.GetBookById
 {
@@ -24,7 +22,7 @@ namespace Application.Book.Queries.GetBookById
 
         public async Task<GetBookByIdDTO> Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
         {
-            var baseQuery =  _bookRepository.GetBookById<GetBookByIdDTO>(request.Id);
+            var baseQuery = _bookRepository.GetBookById<GetBookByIdDTO>(request.Id);
             return _mapper.Map<GetBookByIdDTO>(baseQuery);
         }
     }

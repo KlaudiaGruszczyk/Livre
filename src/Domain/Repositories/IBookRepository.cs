@@ -9,7 +9,9 @@ namespace Domain.Repositories
         T GetBookById<T>(int id);
         Task<Book?> BookDetails(int id);
         List<T> GetBookByKeyWord<T>(string keyWord);
-        // zmienić na GetBookByKeyWord? 
+        List<T> GetBookByAuthor<T>(string keyWord);
+        List<T> GetBookByCategory<T>(string keyWord);
+
 
     }
 }
