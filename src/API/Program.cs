@@ -1,4 +1,5 @@
 
+using Application;
 using Application.Common.Interfaces;
 using Domain.Repositories;
 using Infrastructure.Persistence;
@@ -23,6 +24,9 @@ builder.Services.AddScoped<ApplicationSeeder>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
+
 
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 

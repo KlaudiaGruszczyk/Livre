@@ -1,9 +1,11 @@
-﻿using Application.Book.Commands.CreateBook;
-using Application.Book.Queries.GetAllBooks;
-using Application.Book.Queries.GetBookByAuthor;
-using Application.Book.Queries.GetBookByCategory;
-using Application.Book.Queries.GetBookById;
-using Application.Book.Queries.GetBookByKeyWord;
+﻿using Application.BooksCQRS.Commands.CreateBook;
+using Application.BooksCQRS.Commands.DeleteBook;
+using Application.BooksCQRS.Commands.UpdateBook;
+using Application.BooksCQRS.Queries.GetAllBooks;
+using Application.BooksCQRS.Queries.GetBookByAuthor;
+using Application.BooksCQRS.Queries.GetBookByCategory;
+using Application.BooksCQRS.Queries.GetBookById;
+using Application.BooksCQRS.Queries.GetBookByKeyWord;
 using Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +51,7 @@ namespace API.Controllers
         {
             return Ok(await Mediator.Send(new GetBookByAuthorQuery { Name = name }));
         }
-         
+
         [HttpGet("GetBookByCategory")]
         public async Task<ActionResult> GetBookByCategory([FromQuery] string category)
         {
@@ -80,6 +82,6 @@ namespace API.Controllers
             return Ok(result);
         }
 
-       
+
     }
 }

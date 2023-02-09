@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\Migrations\**" />
+    <Content Remove="Persistence\Migrations\**" />
+    <EmbeddedResource Remove="Persistence\Migrations\**" />
+    <None Remove="Persistence\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
@@ -29,7 +36,6 @@
     <Folder Include="Common\" />
     <Folder Include="Files\" />
     <Folder Include="Persistence\Configurations\" />
-    <Folder Include="Persistence\Migrations\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

@@ -1,11 +1,10 @@
-﻿using Application.Book.Queries.GetAllBooks;
-using Application.Book.Queries.GetBookByAuthor;
-using Application.Book.Queries.GetBookByCategory;
-using Application.Book.Queries.GetBookById;
-using Application.Book.Queries.GetBookByKeyWord;
+﻿using Application.BooksCQRS.Queries.GetAllBooks;
+using Application.BooksCQRS.Queries.GetBookByAuthor;
+using Application.BooksCQRS.Queries.GetBookByCategory;
+using Application.BooksCQRS.Queries.GetBookById;
+using Application.BooksCQRS.Queries.GetBookByKeyWord;
 using Application.Common.Interfaces;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,11 +19,6 @@ namespace Infrastructure.Repositories
         {
             _mapper = mapper;
             _dbContext = dbContext;
-        }
-
-        public Task<Book?> BookDetails(int id)
-        {
-            throw new NotImplementedException();
         }
 
         async Task<List<T>> IBookRepository.GetAllBooks<T>()
@@ -101,15 +95,15 @@ namespace Infrastructure.Repositories
             var baseQuery = _dbContext.Books
             .Where(item => item.Category.Contains(category))
             .Select(item => new GetBookByCategoryDTO()
-        {
-            Title = item.Title,
-            AuthorName = item.AuthorName,
-            Description = item.Description,
-            PublishedDate = item.PublishedDate,
-            Category = item.Category,
-            Publisher = item.Publisher
+            {
+                Title = item.Title,
+                AuthorName = item.AuthorName,
+                Description = item.Description,
+                PublishedDate = item.PublishedDate,
+                Category = item.Category,
+                Publisher = item.Publisher
 
-        }).OfType<T>().ToList();
+            }).OfType<T>().ToList();
 
             return baseQuery;
         }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Reflection;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Application;
 
 public static class ConfigureServices
 {

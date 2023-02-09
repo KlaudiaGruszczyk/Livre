@@ -1,14 +1,10 @@
-﻿using Application.Authors.Commands.CreateAuthor;
-using Application.Authors.Commands.DeleteAuthor;
-using Application.Authors.Commands.UpdateAuthor;
-using Application.Authors.Queries.GetAllAuthors;
-using Application.Authors.Queries.GetAuthorById;
-using Application.Authors.Queries.GetAuthorByName;
-using Application.Book.Commands.CreateBook;
-using Application.Book.Queries.GetAllBooks;
-using Application.Book.Queries.GetBookById;
-using Application.Book.Queries.GetBookByKeyWord;
-using Infrastructure.Repositories;
+﻿using Application.AuthorsCQRS.Commands.CreateAuthor;
+using Application.AuthorsCQRS.Commands.DeleteAuthor;
+using Application.AuthorsCQRS.Commands.UpdateAuthor;
+using Application.AuthorsCQRS.Queries.GetAllAuthors;
+using Application.AuthorsCQRS.Queries.GetAuthorById;
+using Application.AuthorsCQRS.Queries.GetAuthorByName;
+using Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +19,9 @@ namespace API.Controllers
         private readonly IAuthorRepository _authorRepository;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        public AuthorController( IAuthorRepository authorRepository)
+        public AuthorController(IAuthorRepository authorRepository)
         {
-            _authorRepository= authorRepository;
+            _authorRepository = authorRepository;
         }
 
         [HttpGet("GetAllAuthors")]
@@ -73,6 +69,6 @@ namespace API.Controllers
             return Ok(result);
         }
 
-       
+
     }
 }

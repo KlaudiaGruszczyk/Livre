@@ -1,11 +1,10 @@
-﻿using Application.Authors.Queries.GetAllAuthors;
-using Application.Authors.Queries.GetAuthorById;
-using Application.Authors.Queries.GetAuthorByName;
+﻿using Application.AuthorsCQRS.Queries.GetAllAuthors;
+using Application.AuthorsCQRS.Queries.GetAuthorById;
+using Application.AuthorsCQRS.Queries.GetAuthorByName;
 using Application.Common.Interfaces;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Domain.Repositories;
-using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Infrastructure.Repositories
@@ -32,7 +31,7 @@ namespace Infrastructure.Repositories
             return baseQuery.Cast<T>().ToList();
         }
 
-        
+
         T IAuthorRepository.GetAuthorById<T>(int id)
         {
             var baseQuery = _dbContext.Authors
@@ -43,7 +42,7 @@ namespace Infrastructure.Repositories
                 Name = item.Name,
                 Bio = item.Bio
 
-        }).OfType<T>()
+            }).OfType<T>()
         .FirstOrDefault();
 
             return baseQuery;
@@ -62,7 +61,7 @@ namespace Infrastructure.Repositories
 
             return baseQuery;
         }
-        
+
     }
 }
 
