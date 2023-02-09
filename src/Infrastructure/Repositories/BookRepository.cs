@@ -1,5 +1,6 @@
-﻿
-using Application.Book.Queries.GetAllBooks;
+﻿using Application.Book.Queries.GetAllBooks;
+using Application.Book.Queries.GetBookByAuthor;
+using Application.Book.Queries.GetBookByCategory;
 using Application.Book.Queries.GetBookById;
 using Application.Book.Queries.GetBookByKeyWord;
 using Application.Common.Interfaces;
@@ -7,7 +8,6 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Repositories
 {
@@ -18,8 +18,8 @@ namespace Infrastructure.Repositories
         private readonly IApplicationDbContext _dbContext;
         public BookRepository(IMapper mapper, IApplicationDbContext dbContext)
         {
-            _mapper= mapper;
-            _dbContext= dbContext;
+            _mapper = mapper;
+            _dbContext = dbContext;
         }
 
         public Task<Book?> BookDetails(int id)
@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
         }
 
 
-         T IBookRepository.GetBookById<T>(int id)
+        T IBookRepository.GetBookById<T>(int id)
         {
             var baseQuery = _dbContext.Books
         .Where(item => item.BookId == id)
@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories
             AuthorName = item.AuthorName,
             Description = item.Description,
             PublishedDate = item.PublishedDate,
-            Category = item.Category, 
+            Category = item.Category,
             Publisher = item.Publisher
 
         }).OfType<T>()
@@ -65,6 +65,42 @@ namespace Infrastructure.Repositories
             var baseQuery = _dbContext.Books
         .Where(item => item.Title.Contains(keyWord))
         .Select(item => new GetBookByKeyWordDTO()
+        {
+            Title = item.Title,
+            AuthorName = item.AuthorName,
+            Description = item.Description,
+            PublishedDate = item.PublishedDate,
+            Category = item.Category,
+            Publisher = item.Publisher
+
+        }).OfType<T>().ToList();
+
+            return baseQuery;
+        }
+
+        List<T> IBookRepository.GetBookByAuthor<T>(string name)
+        {
+            var baseQuery = _dbContext.Books
+        .Where(item => item.AuthorName.Contains(name))
+        .Select(item => new GetBookByAuthorDTO()
+        {
+            Title = item.Title,
+            AuthorName = item.AuthorName,
+            Description = item.Description,
+            PublishedDate = item.PublishedDate,
+            Category = item.Category,
+            Publisher = item.Publisher
+
+        }).OfType<T>().ToList();
+
+            return baseQuery;
+        }
+
+        List<T> IBookRepository.GetBookByCategory<T>(string category)
+        {
+            var baseQuery = _dbContext.Books
+            .Where(item => item.Category.Contains(category))
+            .Select(item => new GetBookByCategoryDTO()
         {
             Title = item.Title,
             AuthorName = item.AuthorName,

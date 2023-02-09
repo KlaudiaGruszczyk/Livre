@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Application.Book.Commands.CreateBook;
 using Application.Book.Queries.GetAllBooks;
-using MediatR;
-using Domain.Repositories;
-using Application.Book.Commands.CreateBook;
+using Application.Book.Queries.GetBookByAuthor;
+using Application.Book.Queries.GetBookByCategory;
 using Application.Book.Queries.GetBookById;
 using Application.Book.Queries.GetBookByKeyWord;
+using Domain.Repositories;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-
-
     public class BookController : ControllerBase
     {
         private IMediator _mediator;
@@ -23,7 +20,7 @@ namespace API.Controllers
 
         public BookController(IBookRepository bookRepository)
         {
-            _bookRepository= bookRepository;
+            _bookRepository = bookRepository;
         }
 
         [HttpGet("GetAllBooks")]
@@ -38,6 +35,25 @@ namespace API.Controllers
         public async Task<ActionResult> GetBookById([FromQuery] int id)
         {
             return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
+        }
+
+        [HttpGet("GetBookByKeyWord")]
+        public async Task<ActionResult> GetBookByKeyWord([FromQuery] string keyWord)
+        {
+            return Ok(await Mediator.Send(new GetBookByKeyWordQuery { KeyWord = keyWord }));
+        }
+
+
+        [HttpGet("GetBookByAuthor")]
+        public async Task<ActionResult> GetBookByAuthor([FromQuery] string name)
+        {
+            return Ok(await Mediator.Send(new GetBookByAuthorQuery { Name = name }));
+        }
+         
+        [HttpGet("GetBookByCategory")]
+        public async Task<ActionResult> GetBookByCategory([FromQuery] string category)
+        {
+            return Ok(await Mediator.Send(new GetBookByCategoryQuery { Category = category }));
         }
 
         [HttpPut("UpdateBook")]
@@ -59,15 +75,11 @@ namespace API.Controllers
 
         [HttpDelete("DeleteBook")]
         public async Task<ActionResult<int>> DeleteBook(int id)
-        { 
-           var result = await Mediator.Send(new DeleteBookCommand { BookId = id } ); 
+        {
+            var result = await Mediator.Send(new DeleteBookCommand { BookId = id });
             return Ok(result);
         }
 
-        [HttpGet("GetBookByKeyWord")]
-        public async Task<ActionResult> GetBookByKeyWord([FromQuery] string keyWord)
-        {
-            return Ok(await Mediator.Send(new GetBookByKeyWordQuery { KeyWord = keyWord }));
-        }
+       
     }
 }

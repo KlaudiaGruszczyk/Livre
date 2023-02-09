@@ -1,12 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+﻿using Application.Common.Interfaces;
 using Domain.Entities;
-using System.Reflection;
 using MediatR;
-using Application.Common.Interfaces;
-using Microsoft.Extensions.Hosting;
-using System.Reflection.Emit;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Infrastructure.Persistence
 {
@@ -15,14 +11,14 @@ namespace Infrastructure.Persistence
         private readonly IMediator _mediator;
 
         public ApplicationDbContext(
-            DbContextOptions<ApplicationDbContext> options, IMediator mediator) 
+            DbContextOptions<ApplicationDbContext> options, IMediator mediator)
             : base(options)
         {
-            _mediator= mediator;
+            _mediator = mediator;
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<User> Users { get;set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<UserLibrary> UsersLibraryItems { get; set; }
 
@@ -37,11 +33,11 @@ namespace Infrastructure.Persistence
                 .Property(x => x.LibraryItemId)
                 .IsRequired().ValueGeneratedNever();
 
-            builder.Entity<User>()  
-                .Property(x=>x.UserId)
+            builder.Entity<User>()
+                .Property(x => x.UserId)
                 .IsRequired().ValueGeneratedNever();
 
-               
+
             builder.Entity<Author>()
                 .Property(x => x.AuthorId)
                 .IsRequired().ValueGeneratedNever();

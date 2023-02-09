@@ -1,10 +1,7 @@
-﻿using Application.Book.Queries;
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Repositories;
 using MediatR;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Application.Book.Queries.GetAllBooks
 {

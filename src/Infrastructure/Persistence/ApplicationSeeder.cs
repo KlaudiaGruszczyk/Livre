@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using BC = BCrypt.Net.BCrypt;
 
 
@@ -61,7 +61,7 @@ namespace Infrastructure.Persistence
             var books = new List<Book>()
             {
                 new Book()
-                {         
+                {
                     BookId = 1,
                     Title = "Romeo i Julia",
                     BookAuthorId = 1,
@@ -132,25 +132,25 @@ namespace Infrastructure.Persistence
 
         private IEnumerable<UserLibrary> GetUsersLibraryItems()
         {
-            var items = new List<UserLibrary>() 
-            { 
+            var items = new List<UserLibrary>()
+            {
                 new UserLibrary()
                 {
                     LibraryItemId= 1,
                     ReadingStatus = Domain.Enums.ReadingStatus.ToRead,
                     UserIdItem = 1,
                     BookIdItem =2
-                }, 
-                new UserLibrary() 
+                },
+                new UserLibrary()
                 {
                     LibraryItemId= 2,
                     ReadingStatus = Domain.Enums.ReadingStatus.ToRead,
                     UserIdItem = 1,
                     BookIdItem =1
-                } 
+                }
             };
             return items;
         }
     }
 }
- 
+

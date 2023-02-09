@@ -2,7 +2,7 @@
 
 namespace Application.Book.Queries.GetBookById
 {
-    public class GetBookByIdDTO :IBookDetails
+    public class GetBookByIdDTO : IBookDetails
     {
 
         public int BookId { get; set; }
