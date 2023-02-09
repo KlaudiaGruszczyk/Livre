@@ -26,7 +26,6 @@
     <Folder Include="Authors\Queries\GetAuthorById\" />
     <Folder Include="Authors\Queries\GetAuthorByName\" />
     <Folder Include="Authors\Queries\AuthorDetails\" />
-    <Folder Include="Book\Queries\GetBookByTitle\" />
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Mappings\" />

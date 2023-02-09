@@ -1,6 +1,9 @@
-﻿namespace Application.Book.Queries.GetBookById
+﻿using MediatR;
+
+namespace Application.Book.Queries.GetBookById
 {
-    public class GetBookByIdQuery
+    public class GetBookByIdQuery : IRequest<GetBookByIdDTO>
     {
+        public int Id { get; set; }
     }
 }
