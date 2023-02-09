@@ -7,3 +7,4 @@ obj/
 /src/API/obj/Debug/net7.0/API.csproj.AssemblyReference.cache
 /src/Application/obj/Debug/net7.0/Application.csproj.AssemblyReference.cache
 /src/Infrastructure/obj/Debug/net7.0/Infrastructure.csproj.AssemblyReference.cache
+/.vs/LIVRE/v17/.suo
