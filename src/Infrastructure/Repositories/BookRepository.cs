@@ -1,10 +1,13 @@
 ﻿
 using Application.Book.Queries.GetAllBooks;
+using Application.Book.Queries.GetBookById;
+using Application.Book.Queries.GetBookByKeyWord;
 using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Repositories
 {
@@ -37,14 +40,42 @@ namespace Infrastructure.Repositories
         }
 
 
-            public Task<Book?> GetBookById(int id)
+         T IBookRepository.GetBookById<T>(int id)
         {
-            throw new NotImplementedException();
+            var baseQuery = _dbContext.Books
+        .Where(item => item.BookId == id)
+        .Select(item => new GetBookByIdDTO()
+        {
+            Title = item.Title,
+            AuthorName = item.AuthorName,
+            Description = item.Description,
+            PublishedDate = item.PublishedDate,
+            Category = item.Category, 
+            Publisher = item.Publisher
+
+        }).OfType<T>()
+        .FirstOrDefault();
+
+            return baseQuery;
         }
 
-        public Task<List<Book?>> GetBookByTitle(string Name)
+
+        List<T> IBookRepository.GetBookByKeyWord<T>(string keyWord)
         {
-            throw new NotImplementedException();
+            var baseQuery = _dbContext.Books
+        .Where(item => item.Title.Contains(keyWord))
+        .Select(item => new GetBookByKeyWordDTO()
+        {
+            Title = item.Title,
+            AuthorName = item.AuthorName,
+            Description = item.Description,
+            PublishedDate = item.PublishedDate,
+            Category = item.Category,
+            Publisher = item.Publisher
+
+        }).OfType<T>().ToList();
+
+            return baseQuery;
         }
     }
 }

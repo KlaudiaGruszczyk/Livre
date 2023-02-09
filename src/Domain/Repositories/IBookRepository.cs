@@ -6,9 +6,9 @@ namespace Domain.Repositories
     {
         Task<List<T>> GetAllBooks<T>();
         //zmienić na GetBooksPage? dodać paginacje itp
-        Task<Book?> GetBookById(int id);
+        T GetBookById<T>(int id);
         Task<Book?> BookDetails(int id);
-        Task<List<Book?>> GetBookByTitle(string Name);
+        List<T> GetBookByKeyWord<T>(string keyWord);
         // zmienić na GetBookByKeyWord? 
 
     }

@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using Application.Book.Handlers;
 using Domain.Entities;
 using Application.Book.Queries.GetAllBooks;
 using Application.Book.Commands.CreateBook;
+using Application.Book.Queries.GetBookById;
+using Application.Book.Queries.GetBookByKeyWord;
 
 namespace Infrastructure.Persistence
 {
@@ -23,7 +24,11 @@ namespace Infrastructure.Persistence
             CreateMap<Book, CreateBookCommand>();
             CreateMap<CreateBookCommand, Book>();
 
+            CreateMap<Book, GetBookByIdDTO>();
+            CreateMap<GetBookByIdDTO, Book>();
 
+            CreateMap<Book, GetBookByKeyWordDTO>();
+            CreateMap<GetBookByKeyWordDTO, Book>();
 
         }
     }

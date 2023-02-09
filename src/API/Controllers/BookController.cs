@@ -4,6 +4,8 @@ using Application.Book.Queries.GetAllBooks;
 using MediatR;
 using Domain.Repositories;
 using Application.Book.Commands.CreateBook;
+using Application.Book.Queries.GetBookById;
+using Application.Book.Queries.GetBookByKeyWord;
 
 namespace API.Controllers
 {
@@ -32,6 +34,12 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetBookById")]
+        public async Task<ActionResult> GetBookById([FromQuery] int id)
+        {
+            return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
+        }
+
         [HttpPut("UpdateBook")]
         public async Task<ActionResult> UpdateBook([FromQuery] int id, UpdateBookCommand command)
         {
@@ -54,6 +62,12 @@ namespace API.Controllers
         { 
            var result = await Mediator.Send(new DeleteBookCommand { BookId = id } ); 
             return Ok(result);
+        }
+
+        [HttpGet("GetBookByKeyWord")]
+        public async Task<ActionResult> GetBookByKeyWord([FromQuery] string keyWord)
+        {
+            return Ok(await Mediator.Send(new GetBookByKeyWordQuery { KeyWord = keyWord }));
         }
     }
 }
