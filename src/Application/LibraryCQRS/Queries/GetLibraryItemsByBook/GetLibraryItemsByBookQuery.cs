@@ -1,6 +1,9 @@
-﻿namespace Application.LibraryCQRS.Queries.GetLibraryItemsByBook
+﻿using MediatR;
+
+namespace Application.LibraryCQRS.Queries.GetLibraryItemsByBook
 {
-    public class GetLibraryItemsByBookQuery
+    public class GetLibraryItemsByBookQuery : IRequest<List<GetLibraryItemsByBookDTO>>
     {
+        public int Id { get; set; }
     }
 }

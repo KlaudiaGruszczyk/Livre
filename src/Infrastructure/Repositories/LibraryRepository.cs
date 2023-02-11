@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
+using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByStatus;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
@@ -56,7 +57,7 @@ namespace Infrastructure.Repositories
         {
             var baseQuery = _dbContext.UsersLibraryItems
                 .Where(item => item.BookIdItem == bookId)
-                .Select(item => new GetLibraryItemByIdDTO()
+                .Select(item => new GetLibraryItemsByBookDTO()
                 {
                     LibraryItemId = item.LibraryItemId,
                     ReadingStatus = item.ReadingStatus,
@@ -78,10 +79,9 @@ namespace Infrastructure.Repositories
                  ReadingStatus = item.ReadingStatus,
                  UserIdItem = item.UserIdItem,
                  BookIdItem = item.BookIdItem
-             }).OfType<T>()
-              .ToList();
+             }).AsEnumerable();
 
-            return baseQuery;
+            return baseQuery.OfType<T>().ToList();
         }
 
         public List<T> GetLibraryItemsByUser<T>(int userId)
