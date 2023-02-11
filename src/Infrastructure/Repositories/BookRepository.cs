@@ -15,13 +15,14 @@ namespace Infrastructure.Repositories
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _dbContext;
+           
         public BookRepository(IMapper mapper, IApplicationDbContext dbContext)
         {
             _mapper = mapper;
             _dbContext = dbContext;
         }
 
-        async Task<List<T>> IBookRepository.GetAllBooks<T>()
+       async Task<List<T>> IBookRepository.GetAllBooks<T>()
         {
             var baseQuery = await _dbContext.Books
                 .Select(item => new GetAllBooksDTO()
