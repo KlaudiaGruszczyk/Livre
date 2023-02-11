@@ -20,7 +20,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        async Task<List<T>> IAuthorRepository.GetAllAuthors<T>()
+        public async Task<List<T>> GetAllAuthors<T>()
         {
             var baseQuery = await _dbContext.Authors
                 .Select(item => new GetAllAuthorsDTO()
@@ -32,7 +32,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        T IAuthorRepository.GetAuthorById<T>(int id)
+        public T GetAuthorById<T>(int id)
         {
             var baseQuery = _dbContext.Authors
             .Where(item => item.AuthorId == id)
@@ -48,7 +48,7 @@ namespace Infrastructure.Repositories
             return baseQuery;
         }
 
-        List<T> IAuthorRepository.GetAuthorByName<T>(string keyWord)
+        public List<T> GetAuthorByName<T>(string keyWord)
         {
             var baseQuery = _dbContext.Authors
         .Where(item => item.Name.Contains(keyWord))

@@ -17,9 +17,6 @@ namespace Infrastructure.Persistence
             _mediator = mediator;
         }
 
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-        }
 
         public DbSet<Book> Books { get; set; }
         public DbSet<User> Users { get; set; }
