@@ -7,7 +7,7 @@ using Moq;
 using Moq.EntityFrameworkCore;
 using FluentAssertions;
 
-namespace Application.UnitTests
+namespace Application.UnitTests.BookCQRS
 {
     public class GetAllBooksHandlerTests
     {
@@ -32,7 +32,7 @@ namespace Application.UnitTests
             new Book { Title = "Book 2", AuthorName = "Author 2" },
             new Book { Title = "Book 3", AuthorName = "Author 3" }
         };
-            _expectedResult = _books.Select(b => new GetAllBooksDTO {  Title = b.Title, Author = b.AuthorName });
+            _expectedResult = _books.Select(b => new GetAllBooksDTO { Title = b.Title, Author = b.AuthorName });
         }
 
         [Fact]
