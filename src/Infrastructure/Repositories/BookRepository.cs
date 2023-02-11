@@ -22,7 +22,7 @@ namespace Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-       async Task<List<T>> IBookRepository.GetAllBooks<T>()
+       public async Task<List<T>> GetAllBooks<T>()
         {
             var baseQuery = await _dbContext.Books
                 .Select(item => new GetAllBooksDTO()
@@ -35,7 +35,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        T IBookRepository.GetBookById<T>(int id)
+        public T GetBookById<T>(int id)
         {
             var baseQuery = _dbContext.Books
         .Where(item => item.BookId == id)
@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        List<T> IBookRepository.GetBookByKeyWord<T>(string keyWord)
+        public List<T> GetBookByKeyWord<T>(string keyWord)
         {
             var baseQuery = _dbContext.Books
         .Where(item => item.Title.Contains(keyWord))
@@ -73,7 +73,7 @@ namespace Infrastructure.Repositories
             return baseQuery;
         }
 
-        List<T> IBookRepository.GetBookByAuthor<T>(string name)
+        public List<T> GetBookByAuthor<T>(string name)
         {
             var baseQuery = _dbContext.Books
         .Where(item => item.AuthorName.Contains(name))
@@ -91,7 +91,7 @@ namespace Infrastructure.Repositories
             return baseQuery;
         }
 
-        List<T> IBookRepository.GetBookByCategory<T>(string category)
+        public List<T> GetBookByCategory<T>(string category)
         {
             var baseQuery = _dbContext.Books
             .Where(item => item.Category.Contains(category))
