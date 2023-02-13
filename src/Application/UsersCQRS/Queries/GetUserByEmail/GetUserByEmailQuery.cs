@@ -1,6 +1,9 @@
-﻿namespace Application.UsersCQRS.Queries.GetUserByEmail
+﻿using MediatR;
+
+namespace Application.UsersCQRS.Queries.GetUserByEmail
 {
-    public class GetUserByEmailQuery
+    public class GetUserByEmailQuery : IRequest<GetUserByEmailDTO>
     {
+        public string Email { get; set; }
     }
 }

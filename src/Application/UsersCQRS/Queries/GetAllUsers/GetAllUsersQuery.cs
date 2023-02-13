@@ -1,6 +1,14 @@
-﻿namespace Application.UsersCQRS.Queries.GetAllUsers
+﻿using Domain.Enums;
+using MediatR;
+
+namespace Application.UsersCQRS.Queries.GetAllUsers
 {
-    public class GetAllUsersQuery
+    public class GetAllUsersQuery : IRequest<List<GetAllUsersDTO>>
     {
+        public int UserId { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public UserRole Role { get; set; }
     }
 }
