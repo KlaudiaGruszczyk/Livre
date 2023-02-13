@@ -1,6 +1,9 @@
-﻿namespace Application.UsersCQRS.Queries.GetUserById
+﻿using MediatR;
+
+namespace Application.UsersCQRS.Queries.GetUserById
 {
-    public class GetUserByIdQuery
+    public class GetUserByIdQuery : IRequest<GetUserByIdDTO>
     {
+        public int Id { get; set; }
     }
 }

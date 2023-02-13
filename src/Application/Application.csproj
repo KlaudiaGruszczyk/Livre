@@ -10,12 +10,32 @@
   <ItemGroup>
     <Compile Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
     <Compile Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <Compile Remove="Common\Behaviours\**" />
+    <Compile Remove="Common\Exceptions\**" />
+    <Compile Remove="Common\Mappings\**" />
+    <Compile Remove="Common\Models\**" />
+    <Compile Remove="Common\Security\**" />
     <Content Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
     <Content Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <Content Remove="Common\Behaviours\**" />
+    <Content Remove="Common\Exceptions\**" />
+    <Content Remove="Common\Mappings\**" />
+    <Content Remove="Common\Models\**" />
+    <Content Remove="Common\Security\**" />
     <EmbeddedResource Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
     <EmbeddedResource Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <EmbeddedResource Remove="Common\Behaviours\**" />
+    <EmbeddedResource Remove="Common\Exceptions\**" />
+    <EmbeddedResource Remove="Common\Mappings\**" />
+    <EmbeddedResource Remove="Common\Models\**" />
+    <EmbeddedResource Remove="Common\Security\**" />
     <None Remove="AuthorsCQRS\Queries\AuthorDetails\**" />
     <None Remove="AuthorsCQRS\Queries\GetAllBooksFromAuthor\**" />
+    <None Remove="Common\Behaviours\**" />
+    <None Remove="Common\Exceptions\**" />
+    <None Remove="Common\Mappings\**" />
+    <None Remove="Common\Models\**" />
+    <None Remove="Common\Security\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,14 +46,6 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\Behaviours\" />
-    <Folder Include="Common\Exceptions\" />
-    <Folder Include="Common\Mappings\" />
-    <Folder Include="Common\Models\" />
-    <Folder Include="Common\Security\" />
   </ItemGroup>
 
   <ItemGroup>
