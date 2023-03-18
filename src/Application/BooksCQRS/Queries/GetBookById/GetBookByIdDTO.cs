@@ -5,7 +5,7 @@ namespace Application.BooksCQRS.Queries.GetBookById
     public class GetBookByIdDTO : IBookDetails
     {
 
-        public int BookId { get; set; }
+        public Guid BookId { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         //[AllowNull]

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.BooksCQRS.Commands.DeleteBook
 {
-    public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, int>
+    public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Guid>
     {
         private readonly IApplicationDbContext _dbContext;
 
@@ -13,13 +13,13 @@ namespace Application.BooksCQRS.Commands.DeleteBook
             _dbContext = dbContext;
         }
 
-        public async Task<int> Handle(DeleteBookCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(DeleteBookCommand command, CancellationToken cancellationToken)
         {
             var book = await _dbContext.Books.Where(a => a.BookId == command.BookId).FirstOrDefaultAsync();
             if (book == null) return default;
             _dbContext.Books.Remove(book);
             await _dbContext.SaveChangesAsync();
-            return (int)book.BookId;
+            return (Guid)book.BookId;
         }
     }
 }

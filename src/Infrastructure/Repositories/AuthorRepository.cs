@@ -32,7 +32,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        public T GetAuthorById<T>(int id)
+        public T GetAuthorById<T>(Guid id)
         {
             var baseQuery = _dbContext.Authors
             .Where(item => item.AuthorId == id)

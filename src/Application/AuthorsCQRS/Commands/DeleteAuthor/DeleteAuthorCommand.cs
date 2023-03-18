@@ -2,8 +2,8 @@
 
 namespace Application.AuthorsCQRS.Commands.DeleteAuthor
 {
-    public class DeleteAuthorCommand : IRequest<int>
+    public class DeleteAuthorCommand : IRequest<Guid>
     {
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }

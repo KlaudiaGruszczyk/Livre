@@ -1,28 +1,33 @@
 ﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.AuthorsCQRS.Commands.CreateAuthor
 {
-    public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, int>
+    public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, Guid>
     {
 
         private readonly IApplicationDbContext _dbContext;
+
+   
+
         public CreateAuthorCommandHandler(IApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<int> Handle(CreateAuthorCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateAuthorCommand command, CancellationToken cancellationToken)
         {
-            var author = new Domain.Entities.Author();
+            var author = new Author()
+            {               
+                AuthorId = new Guid(),
+                Name = command.Name,
+                Bio = command.Bio
+            };
 
-            author.AuthorId = command.AuthorId;
-            author.Name = command.Name;
-            author.Bio = command.Bio;
-
-            _dbContext.Authors.Add(author);
+            await _dbContext.Authors.AddAsync(author);
             await _dbContext.SaveChangesAsync();
-            return (int)author.AuthorId;
+            return author.AuthorId;
 
 
         }

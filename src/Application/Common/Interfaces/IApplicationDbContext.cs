@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Application.Common.Interfaces
 {
@@ -10,6 +11,9 @@ namespace Application.Common.Interfaces
         DbSet<Author> Authors { get; }
         DbSet<UserLibrary> UsersLibraryItems { get; }
         Task<int> SaveChangesAsync();
+        DatabaseFacade Database { get; }
+
+
 
     }
 }

@@ -28,7 +28,7 @@ namespace Application.UnitTests.BookCQRS
             _bookRepositoryMock = new Mock<IBookRepository>();
             _mapperMock = new Mock<IMapper>();
             _handler = new GetBookByIdHandler(_dbContextMock.Object, _bookRepositoryMock.Object, _mapperMock.Object);
-            _query = new GetBookByIdQuery { Id = 1 };
+            _query = new GetBookByIdQuery { Id = Guid.NewGuid() };
             _book = new GetBookByIdDTO { Title = "Book 1", AuthorName = "Author 1" };
         }
 
@@ -36,8 +36,8 @@ namespace Application.UnitTests.BookCQRS
         public async Task Handle_Should_Return_Correct_Result()
         {
             _bookRepositoryMock
-                 .Setup(repo => repo.GetBookById<Book>(1))
-                 .Returns(await Task.FromResult(new Book { Title = "Book 1", AuthorName = "Author 1" }));
+                 .Setup(repo => repo.GetBookById<Book>(_query.Id))
+                 .Returns(await Task.FromResult(new Book { Title = "Book 1", Author = new Author { Name = "Author 1" } }));
             _mapperMock
                 .Setup(m => m.Map<GetBookByIdDTO>(It.IsAny<Book>()))
                 .Returns(_book);

@@ -28,21 +28,21 @@ namespace Infrastructure.Repositories
                 .Select(item => new GetAllBooksDTO()
                 {
                     Title = item.Title,
-                    Author = item.AuthorName
+                    Author = item.Author.Name
                 }).ToListAsync();
 
             return baseQuery.Cast<T>().ToList();
         }
 
 
-        public T GetBookById<T>(int id)
+        public T GetBookById<T>(Guid id)
         {
             var baseQuery = _dbContext.Books
         .Where(item => item.BookId == id)
         .Select(item => new GetBookByIdDTO()
         {
             Title = item.Title,
-            AuthorName = item.AuthorName,
+            AuthorName = item.Author.Name,
             Description = item.Description,
             PublishedDate = item.PublishedDate,
             Category = item.Category,
@@ -62,7 +62,6 @@ namespace Infrastructure.Repositories
         .Select(item => new GetBookByKeyWordDTO()
         {
             Title = item.Title,
-            AuthorName = item.AuthorName,
             Description = item.Description,
             PublishedDate = item.PublishedDate,
             Category = item.Category,
@@ -76,11 +75,11 @@ namespace Infrastructure.Repositories
         public List<T> GetBookByAuthor<T>(string name)
         {
             var baseQuery = _dbContext.Books
-        .Where(item => item.AuthorName.Contains(name))
+        .Where(item => item.Author.Name.Contains(name))
         .Select(item => new GetBookByAuthorDTO()
         {
             Title = item.Title,
-            AuthorName = item.AuthorName,
+            AuthorName = item.Author.Name,
             Description = item.Description,
             PublishedDate = item.PublishedDate,
             Category = item.Category,
@@ -98,7 +97,7 @@ namespace Infrastructure.Repositories
             .Select(item => new GetBookByCategoryDTO()
             {
                 Title = item.Title,
-                AuthorName = item.AuthorName,
+                AuthorName = item.Author.Name,
                 Description = item.Description,
                 PublishedDate = item.PublishedDate,
                 Category = item.Category,
