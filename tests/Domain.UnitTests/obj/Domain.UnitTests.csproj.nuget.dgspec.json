@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj": {}
+    "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj": {
+    "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
         "projectName": "Domain.UnitTests",
-        "projectPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\kgrus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\tests\\Domain.UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Domain.UnitTests\\Domain.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\klaudia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Domain.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kgrus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\klaudia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,23 +40,43 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[12.0.0, )"
             },
             "BCrypt.Net-Core": {
               "target": "Package",
               "version": "[1.6.0, )"
             },
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "MediatR.Contracts": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.3.2, )"
+              "version": "[17.5.0, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.2.0, )"
             },
             "xunit": {
               "target": "Package",
@@ -85,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

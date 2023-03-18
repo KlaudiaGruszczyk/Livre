@@ -34,7 +34,7 @@ namespace API.Controllers
         }
 
         [HttpGet("GetBookById")]
-        public async Task<ActionResult> GetBookById([FromQuery] int id)
+        public async Task<ActionResult> GetBookById([FromQuery] Guid id)
         {
             return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
         }
@@ -59,7 +59,7 @@ namespace API.Controllers
         }
 
         [HttpPut("UpdateBook")]
-        public async Task<ActionResult> UpdateBook([FromQuery] int id, UpdateBookCommand command)
+        public async Task<ActionResult> UpdateBook([FromQuery] Guid id, UpdateBookCommand command)
         {
             if (id != command.BookId)
             {
@@ -76,7 +76,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("DeleteBook")]
-        public async Task<ActionResult<int>> DeleteBook(int id)
+        public async Task<ActionResult<int>> DeleteBook(Guid id)
         {
             var result = await Mediator.Send(new DeleteBookCommand { BookId = id });
             return Ok(result);

@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "8GL+ZigIof5PKoriWFdjVN97uA8IiqFEr4nAaIqmqPM=",
+  "Hash": "Z3PINzHC9eOOO+GywzKvgSBYEcwfmx3k6I/3Kck+uwY=",
   "Source": "Application",
   "BasePath": "_content/Application",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\Domain.csproj",
+      "Identity": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\Domain.csproj",
       "Version": 2,
       "Source": "Domain",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

@@ -1,9 +1,10 @@
 ﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.AuthorsCQRS.Commands.UpdateAuthor
 {
-    public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, int>
+    public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, Guid>
     {
         private readonly IApplicationDbContext _dbContext;
         public UpdateAuthorCommandHandler(IApplicationDbContext dbContext)
@@ -11,25 +12,20 @@ namespace Application.AuthorsCQRS.Commands.UpdateAuthor
             _dbContext = dbContext;
         }
 
-        public async Task<int> Handle(UpdateAuthorCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(UpdateAuthorCommand command, CancellationToken cancellationToken)
         {
-            var author = _dbContext.Authors.Where(a => a.AuthorId == command.AuthorId).FirstOrDefault();
-            if (author == null)
-            {
-                return default;
-            }
+            
+            var author = new Author     
+            { 
+                AuthorId = new Guid(),
+                Name= command.Name,
+                Bio = command.Bio
+            };
+            await _dbContext.Authors.AddAsync(author);
+            await _dbContext.SaveChangesAsync();
 
-            else
-            {
-                author.AuthorId = command.AuthorId;
-                author.Name = command.Name;
-                author.Bio = command.Bio;
+            return author.AuthorId;
 
-                await _dbContext.SaveChangesAsync();
-                return (int)author.AuthorId;
-
-
-            }
         }
     }
 }

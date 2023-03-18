@@ -28,11 +28,11 @@ namespace Application.UnitTests.BookCQRS
             _query = new GetAllBooksQuery();
             _books = new List<Book>
         {
-            new Book { Title = "Book 1", AuthorName = "Author 1" },
-            new Book { Title = "Book 2", AuthorName = "Author 2" },
-            new Book { Title = "Book 3", AuthorName = "Author 3" }
+            new Book { Title = "Book 1", Author = new Author { Name = "Author 1" } },
+            new Book { Title = "Book 2", Author = new Author { Name = "Author 2" } },
+            new Book { Title = "Book 3", Author = new Author { Name = "Author 3" } }
         };
-            _expectedResult = _books.Select(b => new GetAllBooksDTO { Title = b.Title, Author = b.AuthorName });
+            _expectedResult = _books.Select(b => new GetAllBooksDTO { Title = b.Title, Author = b.Author.Name });
         }
 
         /*

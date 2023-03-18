@@ -31,9 +31,9 @@ namespace Application.UnitTests.BookCQRS
             // Arrange
             var books = new List<Book>
             {
-                new Book { BookId = 1, Title = "Title 1", AuthorName = "Author 1" },
-                new Book { BookId = 2, Title = "Title 2", AuthorName = "Author 2" },
-                new Book { BookId = 3, Title = "Title 3", AuthorName = "Author 1" }
+                new Book { BookId = new Guid(), Title = "Title 1", Author = new Author { Name = "Author 1" } },
+                new Book { BookId = new Guid(), Title = "Title 2", Author = new Author { Name = "Author 2" } },
+                new Book { BookId = new Guid(), Title = "Title 3", Author = new Author { Name = "Author 1" } },
             };
 
             var dtoBooks = new List<GetBookByAuthorDTO>
@@ -44,7 +44,7 @@ namespace Application.UnitTests.BookCQRS
 
             _mockBookRepository
                 .Setup(x => x.GetBookByAuthor<Book>(It.IsAny<string>()))
-                .Returns(books.Where(b => b.AuthorName == "Author 1").ToList());
+                .Returns(books.Where(b => b.Author.Name == "Author 1").ToList());
 
             _mockMapper
                 .Setup(x => x.Map<List<GetBookByAuthorDTO>>(It.IsAny<List<Book>>()))

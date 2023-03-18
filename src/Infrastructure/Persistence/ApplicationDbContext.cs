@@ -2,6 +2,7 @@
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Reflection;
 
 namespace Infrastructure.Persistence
@@ -27,8 +28,11 @@ namespace Infrastructure.Persistence
         {
 
             builder.Entity<Book>()
-             .Property(x => x.BookId)
-             .IsRequired().ValueGeneratedNever();
+                .HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(k => k.AuthorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             builder.Entity<UserLibrary>()
                 .Property(x => x.LibraryItemId)
@@ -36,11 +40,6 @@ namespace Infrastructure.Persistence
 
             builder.Entity<User>()
                 .Property(x => x.UserId)
-                .IsRequired().ValueGeneratedNever();
-
-
-            builder.Entity<Author>()
-                .Property(x => x.AuthorId)
                 .IsRequired().ValueGeneratedNever();
 
 
@@ -53,5 +52,7 @@ namespace Infrastructure.Persistence
 
             return await base.SaveChangesAsync();
         }
+
+        public DatabaseFacade Database => base.Database;
     }
 }

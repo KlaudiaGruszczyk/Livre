@@ -19,7 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Livre_DbConnection"), b => b.MigrationsAssembly("API")));
 builder.Services.AddApplicationServices();
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ApplicationSeeder>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
@@ -37,15 +37,24 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 var scope = app.Services.CreateScope();
+
+app.UseAuthentication();
+
+app.UseHttpsRedirection();
+
+
 var seeder = scope.ServiceProvider.GetRequiredService<ApplicationSeeder>();
 seeder.Seed();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI ( c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Livre");
+        });
 }
 
-app.UseHttpsRedirection();
+
 app.MapControllers();
 
 app.UseRouting();

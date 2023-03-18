@@ -2,9 +2,9 @@
 
 namespace Application.BooksCQRS.Commands.UpdateBook
 {
-    public class UpdateBookCommand : IRequest<int>
+    public class UpdateBookCommand : IRequest<Guid>
     {
-        public int BookId { get; set; }
+        public Guid BookId { get; set; }
         public string Title { get; set; }
         public int BookAuthorId { get; set; }
         public string AuthorName { get; set; }

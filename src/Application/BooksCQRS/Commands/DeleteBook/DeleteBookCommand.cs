@@ -2,8 +2,8 @@
 
 namespace Application.BooksCQRS.Commands.DeleteBook
 {
-    public class DeleteBookCommand : IRequest<int>
+    public class DeleteBookCommand : IRequest<Guid>
     {
-        public int BookId { get; set; }
+        public Guid BookId { get; set; }
     }
 }
