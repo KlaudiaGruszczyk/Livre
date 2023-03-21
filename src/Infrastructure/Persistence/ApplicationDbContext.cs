@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Reflection;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Persistence
 {
@@ -26,6 +27,8 @@ namespace Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Book>()
+             .HasKey(b => b.BookId);
 
             builder.Entity<Book>()
                 .HasOne(b => b.Author)
@@ -33,14 +36,27 @@ namespace Infrastructure.Persistence
                 .HasForeignKey(k => k.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<UserLibrary>()
+                .HasKey(b => b.LibraryItemId);
 
             builder.Entity<UserLibrary>()
-                .Property(x => x.LibraryItemId)
-                .IsRequired().ValueGeneratedNever();
+                .HasOne(l => l.User)
+                .WithMany(u => u.UserLibrary)
+                .HasForeignKey(l => l.UserId);
+
+            builder.Entity<UserLibrary>()
+                .HasOne(l => l.Book)
+                .WithMany(b => b.UserLibrary)
+                .HasForeignKey(l => l.BookId);
 
             builder.Entity<User>()
-                .Property(x => x.UserId)
-                .IsRequired().ValueGeneratedNever();
+                .HasKey(u => u.UserId);
+
+            builder.Entity<User>()
+                .HasMany(u => u.UserLibrary)
+                .WithOne(li => li.User)
+                .HasForeignKey(li => li.UserId);
+
 
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

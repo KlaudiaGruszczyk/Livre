@@ -30,39 +30,39 @@ namespace Infrastructure.Repositories
                {
                    LibraryItemId = item.LibraryItemId,
                    ReadingStatus = item.ReadingStatus,
-                   UserIdItem= item.UserIdItem,
-                   BookIdItem= item.BookIdItem
+                   UserId= item.UserId,
+                   BookIdI= item.BookId
                }).ToListAsync();
 
             return baseQuery.Cast<T>().ToList();
         }
 
-        public T GetLibraryItemById<T>(int id)
+        public T GetLibraryItemById<T>(Guid id)
         {
             var baseQuery = _dbContext.UsersLibraryItems
-        .Where(item => item.LibraryItemId == id)
-        .Select(item => new GetLibraryItemByIdDTO()
-        {
-           LibraryItemId = item.LibraryItemId,
-           ReadingStatus = item.ReadingStatus,
-           UserIdItem= item.UserIdItem,
-           BookIdItem= item.BookIdItem
-        }).OfType<T>()
-            .FirstOrDefault();
+                .Where(item => item.LibraryItemId == id)
+                .Select(item => new GetLibraryItemByIdDTO()
+                 {
+                    LibraryItemId = item.LibraryItemId,
+                    ReadingStatus = item.ReadingStatus,
+                    UserId = item.UserId,
+                    BookId = item.BookId
+                 }).OfType<T>()
+                   .FirstOrDefault();
 
             return baseQuery;
         }
 
-        public List<T> GetLibraryItemsByBook<T>(int bookId)
+        public List<T> GetLibraryItemsByBook<T>(Guid bookId)
         {
             var baseQuery = _dbContext.UsersLibraryItems
-                .Where(item => item.BookIdItem == bookId)
+                .Where(item => item.BookId == bookId)
                 .Select(item => new GetLibraryItemsByBookDTO()
                 {
                     LibraryItemId = item.LibraryItemId,
                     ReadingStatus = item.ReadingStatus,
-                    UserIdItem = item.UserIdItem,
-                    BookIdItem = item.BookIdItem
+                    UserId = item.UserId,
+                    BookId = item.BookId
                 }).OfType<T>()
                  .ToList();
 
@@ -77,23 +77,23 @@ namespace Infrastructure.Repositories
              {
                  LibraryItemId = item.LibraryItemId,
                  ReadingStatus = item.ReadingStatus,
-                 UserIdItem = item.UserIdItem,
-                 BookIdItem = item.BookIdItem
+                 UserId = item.UserId,
+                 BookId = item.BookId
              }).AsEnumerable();
 
             return baseQuery.OfType<T>().ToList();
         }
 
-        public List<T> GetLibraryItemsByUser<T>(int userId)
+        public List<T> GetLibraryItemsByUser<T>(Guid userId)
         {
             var baseQuery = _dbContext.UsersLibraryItems
-                .Where(item => item.UserIdItem == userId)
+                .Where(item => item.UserId == userId)
                 .Select(item => new GetLibraryItemsByUserDTO()
                 {
                     LibraryItemId = item.LibraryItemId,
                     ReadingStatus = item.ReadingStatus,
-                    UserIdItem = item.UserIdItem,
-                    BookIdItem = item.BookIdItem
+                    UserId = item.UserId,
+                    BookId = item.BookId
                 }).OfType<T>()
                  .ToList();
 

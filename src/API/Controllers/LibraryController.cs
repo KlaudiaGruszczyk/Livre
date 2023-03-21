@@ -41,21 +41,21 @@ namespace API.Controllers
         }
 
         [HttpGet("GetLibraryItemById")]
-        public async Task<ActionResult> GetLibraryItemById([FromQuery] int id)
+        public async Task<ActionResult> GetLibraryItemById([FromQuery] Guid id)
         {
             return Ok(await Mediator.Send(new GetLibraryItemByIdQuery { Id = id }));
         }
 
         [HttpGet("GetLibraryItemsByBook")]
 
-        public async Task<ActionResult> GetLibraryItemsByBook([FromQuery] int bookId)
+        public async Task<ActionResult> GetLibraryItemsByBook([FromQuery] Guid bookId)
         {
             return Ok(await Mediator.Send(new GetLibraryItemsByBookQuery { Id = bookId }));
         }
 
         [HttpGet("GetLibraryItemsByUser")]
 
-        public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] int userId)
+        public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] Guid userId)
         {
             return Ok(await Mediator.Send(new GetLibraryItemsByUserQuery { Id = userId }));
         }
@@ -67,7 +67,7 @@ namespace API.Controllers
         }
 
         [HttpPut("UpdateLibraryItem")]
-        public async Task<ActionResult> UpdateBook([FromQuery] int id, UpdateLibraryItemCommand command)
+        public async Task<ActionResult> UpdateBook([FromQuery] Guid id, UpdateLibraryItemCommand command)
         {
             if (id != command.LibraryItemId)
             {
@@ -77,14 +77,14 @@ namespace API.Controllers
         }
 
         [HttpPost("CreateLibraryItem")]
-        public async Task<ActionResult<int>> CreateLibraryItem(CreateLibraryItemCommand command)
+        public async Task<ActionResult<Guid>> CreateLibraryItem(CreateLibraryItemCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);
         }
 
         [HttpDelete("DeleteLibraryItem")]
-        public async Task<ActionResult<int>> DeleteLibraryItem(int id)
+        public async Task<ActionResult<Guid>> DeleteLibraryItem(Guid id)
         {
             var result = await Mediator.Send(new DeleteLibraryItemCommand { LibraryItemId = id });
             return Ok(result);

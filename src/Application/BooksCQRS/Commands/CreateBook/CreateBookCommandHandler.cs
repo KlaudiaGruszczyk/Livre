@@ -56,7 +56,6 @@ namespace Application.BooksCQRS.Commands.CreateBook
                 }
                 catch (Exception)
                 {
-                    // Wycofaj transakcję w przypadku błędu
                     await transaction.RollbackAsync();
                     throw;
 
