@@ -5,10 +5,10 @@ namespace Domain.Repositories
     public interface ILibraryRepository
     {
         Task<List<T>> GetAllLibraryItems<T>();
-        T GetLibraryItemById<T>(int id);
-        List<T> GetLibraryItemsByBook<T>(int bookId);
+        T GetLibraryItemById<T>(Guid id);
+        List<T> GetLibraryItemsByBook<T>(Guid bookId);
         List<T> GetLibraryItemsByStatus<T>(ReadingStatus status);
-        List<T> GetLibraryItemsByUser<T>(int bookId);
+        List<T> GetLibraryItemsByUser<T>(Guid bookId);
 
 
     }

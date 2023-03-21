@@ -4,6 +4,6 @@ namespace Application.LibraryCQRS.Queries.GetLibraryItemsByUser
 {
     public class GetLibraryItemsByUserQuery : IRequest<List<GetLibraryItemsByUserDTO>>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

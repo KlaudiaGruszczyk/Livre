@@ -3,14 +3,14 @@ using Domain.Enums;
 
 namespace Application.LibraryCQRS.Commands.CreateLibraryItem
 {
-    public class CreateLibraryItemCommand : IRequest<int>
+    public class CreateLibraryItemCommand : IRequest<Guid>
     {
-        public int LibraryItemId { get; set; }
+        public Guid LibraryItemId { get; set; }
         public ReadingStatus ReadingStatus { get; set; }
 
-        public int? UserIdItem { get; set; }
+        public Guid UserId { get; set; }
         //public virtual User User { get; set; }
 
-        public int? BookIdItem { get; set; }
+        public Guid BookId { get; set; }
     }
 }

@@ -13,5 +13,7 @@
 
         public virtual Author Author { get; set; }
 
+        public ICollection<UserLibrary> UserLibrary { get; set; }
+
     }
 }

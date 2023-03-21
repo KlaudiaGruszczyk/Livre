@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories
             return baseQuery;
         }
 
-        public T GetUserById<T>(int id)
+        public T GetUserById<T>(Guid id)
         {
             var baseQuery = _dbContext.Users
             .Where(item => item.UserId==id)

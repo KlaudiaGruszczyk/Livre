@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.LibraryCQRS.Commands.DeleteLibraryItem
 {
-    public class DeleteLibraryItemCommandHandler : IRequestHandler<DeleteLibraryItemCommand, int>
+    public class DeleteLibraryItemCommandHandler : IRequestHandler<DeleteLibraryItemCommand, Guid>
     {
         private readonly IApplicationDbContext _dbContext;
 
@@ -14,13 +14,17 @@ namespace Application.LibraryCQRS.Commands.DeleteLibraryItem
             _dbContext = dbContext;
         }
 
-        public async Task<int> Handle(DeleteLibraryItemCommand command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(DeleteLibraryItemCommand command, CancellationToken cancellationToken)
         {
-            var item = await _dbContext.UsersLibraryItems.Where(a => a.LibraryItemId == command.LibraryItemId).FirstOrDefaultAsync();
+            var item = await _dbContext.UsersLibraryItems
+                .Where(a => a.LibraryItemId == command.LibraryItemId)
+                .FirstOrDefaultAsync();
             if (item == null) return default;
-            _dbContext.UsersLibraryItems.Remove(item);
-            await _dbContext.SaveChangesAsync();
-            return (int)item.LibraryItemId;
+            _dbContext.UsersLibraryItems
+                .Remove(item);
+            await _dbContext
+                .SaveChangesAsync();
+            return (Guid)item.LibraryItemId;
         }
     }
 }
