@@ -1,6 +1,13 @@
-﻿namespace Application.UsersCQRS.Commands.CreateUser
+﻿using Domain.Enums;
+using MediatR;
+
+namespace Application.UsersCQRS.Commands.CreateUser
 {
-    public class CreateUserCommand
+    public class CreateUserCommand : IRequest<Guid>
     {
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public UserRole Role { get; set; }
     }
 }
