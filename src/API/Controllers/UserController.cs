@@ -1,7 +1,9 @@
-﻿using Application.LibraryCQRS.Queries.GetAllLibraryItems;
+﻿using Application.BooksCQRS.Commands.DeleteBook;
+using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
 using Application.UsersCQRS.Commands.CreateUser;
+using Application.UsersCQRS.Commands.DeleteUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserByEmail;
 using Application.UsersCQRS.Queries.GetUserById;
@@ -49,6 +51,13 @@ namespace API.Controllers
         public async Task<ActionResult> RegisterUser(CreateUserCommand command)
         {
             var result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpDelete("DeleteUser")]
+        public async Task<ActionResult<int>> DeleteUser(Guid id)
+        {
+            var result = await Mediator.Send(new DeleteUserCommand { UserId = id });
             return Ok(result);
         }
 
