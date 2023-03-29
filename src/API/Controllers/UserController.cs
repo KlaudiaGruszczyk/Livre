@@ -1,7 +1,9 @@
 ﻿using Application.BooksCQRS.Commands.DeleteBook;
+using Application.BooksCQRS.Commands.UpdateBook;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
+using Application.UsersCQRS.Commands.ChangeEmail;
 using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Commands.DeleteUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
@@ -48,10 +50,17 @@ namespace API.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> RegisterUser(CreateUserCommand command)
+        public async Task<ActionResult> RegisterUser(RegisterUserCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);
+        }
+
+        [HttpPut("UpdateEmail")]
+        public async Task<ActionResult> UpdateEmail (ChangeEmailCommand command)
+        {
+           
+            return Ok(await Mediator.Send(command));
         }
 
         [HttpDelete("DeleteUser")]
