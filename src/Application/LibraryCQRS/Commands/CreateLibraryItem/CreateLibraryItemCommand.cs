@@ -5,7 +5,6 @@ namespace Application.LibraryCQRS.Commands.CreateLibraryItem
 {
     public class CreateLibraryItemCommand : IRequest<Guid>
     {
-        public Guid LibraryItemId { get; set; }
         public ReadingStatus ReadingStatus { get; set; }
 
         public Guid UserId { get; set; }

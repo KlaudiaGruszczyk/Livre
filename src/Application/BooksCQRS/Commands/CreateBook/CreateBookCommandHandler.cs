@@ -40,7 +40,7 @@ namespace Application.BooksCQRS.Commands.CreateBook
 
                     var book = new Book
                     {
-                        BookId = new Guid(),
+                        BookId = Guid.NewGuid(),
                         Title = command.Title,
                         Description = command.Description,
                         PublishedDate = command.PublishedDate,

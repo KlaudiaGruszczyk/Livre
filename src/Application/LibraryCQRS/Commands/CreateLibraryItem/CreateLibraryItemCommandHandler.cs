@@ -31,7 +31,7 @@ namespace Application.LibraryCQRS.Commands.CreateLibraryItem
 
             var item = new Library();
 
-            item.LibraryItemId = command.LibraryItemId;
+            item.LibraryItemId = Guid.NewGuid();
 
             item.ReadingStatus = command.ReadingStatus;
             item.UserId = command.UserId;

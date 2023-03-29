@@ -20,7 +20,7 @@ namespace Application.AuthorsCQRS.Commands.CreateAuthor
         {
             var author = new Author()
             {               
-                AuthorId = new Guid(),
+                AuthorId = Guid.NewGuid(),
                 Name = command.Name,
                 Bio = command.Bio
             };
