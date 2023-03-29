@@ -18,7 +18,7 @@ namespace Application.AuthorsCQRS.Commands.DeleteAuthor
             var author = await _dbContext.Authors.Where(a => a.AuthorId == command.AuthorId).FirstOrDefaultAsync();
             if (author == null) return default;
             _dbContext.Authors.Remove(author);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return (Guid)author.AuthorId;
         }
     }

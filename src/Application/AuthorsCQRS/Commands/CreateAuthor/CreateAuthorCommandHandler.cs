@@ -26,7 +26,7 @@ namespace Application.AuthorsCQRS.Commands.CreateAuthor
             };
 
             await _dbContext.Authors.AddAsync(author);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return author.AuthorId;
 
 

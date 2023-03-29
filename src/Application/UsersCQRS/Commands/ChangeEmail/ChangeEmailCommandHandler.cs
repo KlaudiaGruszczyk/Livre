@@ -24,7 +24,7 @@ namespace Application.UsersCQRS.Commands.ChangeEmail
             else
             {
                 user.Email = command.Email;
-                await _dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync(cancellationToken);
                 return user.Email;
             }
         }

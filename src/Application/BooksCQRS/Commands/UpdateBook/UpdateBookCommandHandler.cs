@@ -28,7 +28,7 @@ namespace Application.BooksCQRS.Commands.UpdateBook
                 book.PublishedDate = command.PublishedDate;
                 book.Category = command.Category;
                 book.Publisher = command.Publisher;
-                await _dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync(cancellationToken);
                 return (Guid)book.BookId;
 
 

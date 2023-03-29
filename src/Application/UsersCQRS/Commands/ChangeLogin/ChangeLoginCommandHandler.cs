@@ -23,7 +23,7 @@ namespace Application.UsersCQRS.Commands.ChangeLogin
             else
             {
                 user.Login = command.Login;
-                await _dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync(cancellationToken);
                 return user.Login;
             }
         }

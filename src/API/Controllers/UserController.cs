@@ -5,6 +5,7 @@ using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
 using Application.UsersCQRS.Commands.ChangeEmail;
 using Application.UsersCQRS.Commands.ChangeLogin;
+using Application.UsersCQRS.Commands.ChangePassword;
 using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Commands.DeleteUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
@@ -66,6 +67,13 @@ namespace API.Controllers
 
         [HttpPut("UpdateLogin")]
         public async Task<ActionResult> UpdateLogin(ChangeLoginCommand command)
+        {
+
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpPut("UpdatePassword")]
+        public async Task<ActionResult> UpdatePassword(ChangePasswordCommand command)
         {
 
             return Ok(await Mediator.Send(command));
