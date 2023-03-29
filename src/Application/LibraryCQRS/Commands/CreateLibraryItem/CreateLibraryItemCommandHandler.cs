@@ -29,7 +29,7 @@ namespace Application.LibraryCQRS.Commands.CreateLibraryItem
                 throw new ArgumentException($"Book with BookId '{command.BookId}' does not exist.");
             }
 
-            var item = new UserLibrary();
+            var item = new Library();
 
             item.LibraryItemId = command.LibraryItemId;
 

@@ -9,7 +9,7 @@ namespace Application.Common.Interfaces
         DbSet<Domain.Entities.Book> Books { get; }
         DbSet<User> Users { get; }
         DbSet<Author> Authors { get; }
-        DbSet<UserLibrary> UsersLibraryItems { get; }
+        DbSet<Library> UsersLibraryItems { get; }
         Task<int> SaveChangesAsync();
         DatabaseFacade Database { get; }
 

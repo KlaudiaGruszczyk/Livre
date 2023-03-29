@@ -23,7 +23,7 @@ namespace Infrastructure.Persistence
         public DbSet<Book> Books { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<UserLibrary> UsersLibraryItems { get; set; }
+        public DbSet<Library> UsersLibraryItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,15 +36,15 @@ namespace Infrastructure.Persistence
                 .HasForeignKey(k => k.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<UserLibrary>()
+            builder.Entity<Library>()
                 .HasKey(b => b.LibraryItemId);
 
-            builder.Entity<UserLibrary>()
+            builder.Entity<Library>()
                 .HasOne(l => l.User)
                 .WithMany(u => u.UserLibrary)
                 .HasForeignKey(l => l.UserId);
 
-            builder.Entity<UserLibrary>()
+            builder.Entity<Library>()
                 .HasOne(l => l.Book)
                 .WithMany(b => b.UserLibrary)
                 .HasForeignKey(l => l.BookId);

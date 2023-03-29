@@ -32,9 +32,9 @@ namespace Application.UnitTests
             // Arrange
             var books = new List<Book>
             {
-                new Book { BookId = 1, Title = "Title 1", Category = "Science Fiction" },
-                new Book { BookId = 2, Title = "Title 2", Category = "Science Fiction" },
-                new Book { BookId = 3, Title = "Title 3", Category = "Drama" }
+                new Book { BookId = new Guid(), Title = "Title 1", Category = "Science Fiction" },
+                new Book { BookId = new Guid(), Title = "Title 2", Category = "Science Fiction" },
+                new Book { BookId = new Guid(), Title = "Title 3", Category = "Drama" }
             };
 
             var dtoBooks = new List<GetBookByCategoryDTO>
