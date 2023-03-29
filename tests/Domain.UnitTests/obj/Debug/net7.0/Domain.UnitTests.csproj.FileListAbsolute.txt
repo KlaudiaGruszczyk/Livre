@@ -209,3 +209,6 @@ C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\obj\Debug\net7.0\refi
 C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\obj\Debug\net7.0\Domain.UnitTests.pdb
 C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\obj\Debug\net7.0\Domain.UnitTests.genruntimeconfig.cache
 C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\obj\Debug\net7.0\ref\Domain.UnitTests.dll
+C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\bin\Debug\net7.0\MediatR.dll
+C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\klaudia\source\repos\Livre\tests\Domain.UnitTests\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

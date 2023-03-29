@@ -52,6 +52,8 @@ namespace Infrastructure.Persistence
                     _dbContext.UsersLibraryItems.AddRange(items);
                     _dbContext.SaveChanges();
                 }
+
+                
             }
         }
 
@@ -68,7 +70,8 @@ namespace Infrastructure.Persistence
                     Description = "Romeo i Julia to dramat Wiliama Szekspira wydany w 1597 roku. Źródeł dzieła można doszukiwać się w dwóch utworach Le tre parti de le Novelle del Bandello oraz Palace of Pleasure.\r\n\r\nMatka Julii Kapulet postanawia wydać córkę za Parysa (jest to krewny księcia Werony). Organizuje ona bal, na którym młodzi mają się zapoznać. Zjawia się tam też potomek zwaśnionego z nimi rodu Monteki, Romeo. Romeo i Julia zakochują się w sobie „od pierwszego wejrzenia”. Wkrótce w tajemnicy biorą ze sobą ślub. Jednak los bywa okrutny….",
                     PublishedDate = new DateTime(1597, 01, 01),
                     Category = "Literatura Klasyczna",
-                    Publisher = "Dragon"
+                    Publisher = "Dragon",
+                    AuthorId = new Guid("4c857058-91d2-4b7d-90e3-227ceba718a6")
     },
                 new Book()
                 {
@@ -77,7 +80,8 @@ namespace Infrastructure.Persistence
                     Description = "Młody Tristran Thorn zrobi wszystko, byle tylko zdobyć lodowate serce pięknej Victorii - przyniesie jej nawet gwiazdę, której upadek z nieba oglądali razem pewnej nocy. By jednak to uczynić, musi wyprawić się na niezbadane ziemie po drugiej stronie starożytnego i dobrze pilnowanego muru, od którego bierze nazwę ich maleńka wioska. Za owym murem leży Kraina Czarów, gdzie nic nie jest takie, jakim je sobie wyobraził - nawet upadła gwiazda.",
                     PublishedDate = new DateTime(1999, 01, 01),
                     Category = "Science Fiction",
-                    Publisher = "Mag"
+                    Publisher = "Mag",
+                     AuthorId = new Guid("8a2db2b1-c73c-47b5-b70c-5f7b5cb6e930")
                 }
             };
             return books;
@@ -127,18 +131,18 @@ namespace Infrastructure.Persistence
             return authors;
         }
 
-        private IEnumerable<UserLibrary> GetUsersLibraryItems()
+        private IEnumerable<Library> GetUsersLibraryItems()
         {
-            var items = new List<UserLibrary>()
+            var items = new List<Library>()
             {
-                new UserLibrary()
+                new Library()
                 {
                     LibraryItemId= new Guid("5c6bd87d-1f76-44c7-ae5c-20cb17f165ed"),
                     ReadingStatus = Domain.Enums.ReadingStatus.ToRead,
                     UserId = new Guid("8d6c5b6f-1c2f-45f8-9f97-6e5c4d5f8a7d"),
                     BookId =new Guid("0c74f13a-b74d-4cf9-b63b-87f9827718d8")
                 },
-                new UserLibrary()
+                new Library()
                 {
                     LibraryItemId= new Guid("c2a1d3ab-3c43-4133-9a61-76e3a685ce02"),
                     ReadingStatus = Domain.Enums.ReadingStatus.ToRead,

@@ -48,13 +48,13 @@ namespace Infrastructure.Persistence
 
             var readingStatus = new ReadingStatus();
 
-            CreateMap<UserLibrary, GetLibraryItemsByStatusDTO>()
+            CreateMap<Library, GetLibraryItemsByStatusDTO>()
                 .ForMember(m=>m.ReadingStatus, c=> c.MapFrom(s=> readingStatus));
-            CreateMap<GetLibraryItemsByStatusDTO, UserLibrary>();
+            CreateMap<GetLibraryItemsByStatusDTO, Library>();
 
 
-            CreateMap<UserLibrary, GetLibraryItemsByUserDTO>();
-            CreateMap<GetLibraryItemsByUserDTO, UserLibrary>();
+            CreateMap<Library, GetLibraryItemsByUserDTO>();
+            CreateMap<GetLibraryItemsByUserDTO, Library>();
 
 
         }
