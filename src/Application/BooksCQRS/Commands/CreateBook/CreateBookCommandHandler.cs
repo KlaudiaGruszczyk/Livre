@@ -50,7 +50,7 @@ namespace Application.BooksCQRS.Commands.CreateBook
                     };
 
                     _dbContext.Books.AddAsync(book);
-                    await _dbContext.SaveChangesAsync();
+                    await _dbContext.SaveChangesAsync(cancellationToken);
                     return (Guid)book.BookId;
                     await transaction.CommitAsync();
                 }

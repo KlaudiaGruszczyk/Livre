@@ -38,7 +38,7 @@ namespace Application.LibraryCQRS.Commands.CreateLibraryItem
             item.UserId = command.UserId;
 
             _dbContext.UsersLibraryItems.Add(item);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return (Guid)item.LibraryItemId;
 
 

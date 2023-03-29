@@ -21,7 +21,7 @@ namespace Application.UsersCQRS.Commands.DeleteUser
             var user = await _dbContext.Users.Where(a => a.UserId == command.UserId).FirstOrDefaultAsync();
             if (user == null) return default;
             _dbContext.Users.Remove(user);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return (Guid)user.UserId;
         }
     }

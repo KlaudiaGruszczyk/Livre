@@ -22,7 +22,7 @@ namespace Application.AuthorsCQRS.Commands.UpdateAuthor
                 Bio = command.Bio
             };
             await _dbContext.Authors.AddAsync(author);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             return author.AuthorId;
 

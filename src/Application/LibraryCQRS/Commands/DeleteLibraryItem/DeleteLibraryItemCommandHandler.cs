@@ -23,7 +23,7 @@ namespace Application.LibraryCQRS.Commands.DeleteLibraryItem
             _dbContext.UsersLibraryItems
                 .Remove(item);
             await _dbContext
-                .SaveChangesAsync();
+                .SaveChangesAsync(cancellationToken);
             return (Guid)item.LibraryItemId;
         }
     }

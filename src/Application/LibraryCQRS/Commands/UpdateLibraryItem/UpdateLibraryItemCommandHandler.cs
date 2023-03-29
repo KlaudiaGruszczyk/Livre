@@ -27,7 +27,7 @@ namespace Application.LibraryCQRS.Commands.UpdateLibraryItem
                 item.BookId = command.BookId;
                 item.UserId = command.UserId;
 
-                await _dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync(cancellationToken);
                 return (Guid)item.LibraryItemId;
 
 
