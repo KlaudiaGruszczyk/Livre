@@ -1,12 +1,14 @@
 ﻿using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
+using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserByEmail;
 using Application.UsersCQRS.Queries.GetUserById;
 using Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace API.Controllers
 {
@@ -41,6 +43,13 @@ namespace API.Controllers
         public async Task<ActionResult> GetUserByEmail([FromQuery] string email)
         {
             return Ok(await Mediator.Send(new GetUserByEmailQuery { Email = email }));
+        }
+
+        [HttpPost("Register")]
+        public async Task<ActionResult> RegisterUser(CreateUserCommand command)
+        {
+            var result = await Mediator.Send(command);
+            return Ok(result);
         }
 
     }
