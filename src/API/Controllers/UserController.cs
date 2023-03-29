@@ -8,6 +8,7 @@ using Application.UsersCQRS.Commands.ChangeLogin;
 using Application.UsersCQRS.Commands.ChangePassword;
 using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Commands.DeleteUser;
+using Application.UsersCQRS.Commands.LoginUser;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserByEmail;
 using Application.UsersCQRS.Queries.GetUserById;
@@ -53,6 +54,13 @@ namespace API.Controllers
 
         [HttpPost("Register")]
         public async Task<ActionResult> RegisterUser(RegisterUserCommand command)
+        {
+            var result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost("Login")]
+        public async Task<ActionResult> LoginUser(LoginUserCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);
