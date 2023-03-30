@@ -14,7 +14,9 @@ using Application.LibraryCQRS.Queries.GetLibraryItemsByUser;
 using Domain.Enums;
 using Domain.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 
 namespace API.Controllers
@@ -32,6 +34,7 @@ namespace API.Controllers
             _libraryRepository = libraryRepository;
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet("GetAllLibraryItems")]
         public async Task<ActionResult> GetAllLibraryItems()
         {
@@ -40,12 +43,14 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetLibraryItemById")]
         public async Task<ActionResult> GetLibraryItemById([FromQuery] Guid id)
         {
             return Ok(await Mediator.Send(new GetLibraryItemByIdQuery { Id = id }));
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet("GetLibraryItemsByBook")]
 
         public async Task<ActionResult> GetLibraryItemsByBook([FromQuery] Guid bookId)
@@ -53,6 +58,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetLibraryItemsByBookQuery { Id = bookId }));
         }
 
+        [Authorize(Roles = "User, Admin, Moderator")]
         [HttpGet("GetLibraryItemsByUser")]
 
         public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] Guid userId)
@@ -60,12 +66,14 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetLibraryItemsByUserQuery { Id = userId }));
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet("GetLibraryItemsByStatus")]
         public async Task<ActionResult> GetLibraryItemsByStatus([FromQuery] ReadingStatus readingStatus)
         {
             return Ok(await Mediator.Send(new GetLibraryItemsByStatusQuery { Status = (readingStatus)}));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateLibraryItem")]
         public async Task<ActionResult> UpdateBook([FromQuery] Guid id, UpdateLibraryItemCommand command)
         {
@@ -76,6 +84,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateLibraryItem")]
         public async Task<ActionResult<Guid>> CreateLibraryItem(CreateLibraryItemCommand command)
         {
@@ -83,6 +92,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteLibraryItem")]
         public async Task<ActionResult<Guid>> DeleteLibraryItem(Guid id)
         {

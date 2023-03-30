@@ -6,7 +6,9 @@ using Application.AuthorsCQRS.Queries.GetAuthorById;
 using Application.AuthorsCQRS.Queries.GetAuthorByName;
 using Domain.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace API.Controllers
 {
@@ -24,6 +26,7 @@ namespace API.Controllers
             _authorRepository = authorRepository;
         }
 
+        [AllowAnonymous]
         [HttpGet("GetAllAuthors")]
         public async Task<ActionResult> GetAllAuthors()
         {
@@ -32,19 +35,21 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetAuthorById")]
         public async Task<ActionResult> GetAuthorById([FromQuery] Guid id)
         {
             return Ok(await Mediator.Send(new GetAuthorByIdQuery { Id = id }));
         }
 
-
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetAuthorByName")]
         public async Task<ActionResult> GetAuthorByName([FromQuery] string name)
         {
             return Ok(await Mediator.Send(new GetAuthorByNameQuery { Name = name }));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthor")]
         public async Task<ActionResult> UpdateAuthor([FromQuery] Guid id, UpdateAuthorCommand command)
         {
@@ -55,6 +60,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateAuthor")]
         public async Task<ActionResult<Guid>> CreateAuthor(CreateAuthorCommand command)
         {
@@ -62,6 +68,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteAuthor")]
         public async Task<ActionResult<int>> DeleteAuthor(Guid id)
         {
