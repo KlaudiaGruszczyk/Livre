@@ -1,5 +1,7 @@
 ﻿using Application.Common.Interfaces;
+using Application.UsersCQRS.Commands.ChangeLogin;
 using Domain.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,12 @@ namespace Application.UsersCQRS.Commands.ChangeEmail
 
         public async Task<string> Handle(ChangeEmailCommand command, CancellationToken cancellationToken)
         {
+            var validator = new ChangeEmailCommandValidator();
+            var validationResult = await validator.ValidateAsync(command, cancellationToken);
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
             var user = _dbContext.Users.Where(a => a.UserId== command.UserId).FirstOrDefault();
 
             if (user == null)

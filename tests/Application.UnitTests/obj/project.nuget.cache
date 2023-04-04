@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dG0LDrGiMMdA9EJwSy+fUGDREVTaV1ysjlkgXAQABPjmk1Ubn/tD9vHfFK/yO5O8jq11TDwRTaWfM2tZCcOr1g==",
+  "dgSpecHash": "P23vR5qVx28wMiEPskqLN92Jcs5ktzGYVmOFP2NgVKVbwHde8+wEf+eLzwEH+sC34I/CPlqSpkdqIDHR/kysvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\klaudia\\source\\repos\\Livre\\tests\\Application.UnitTests\\Application.UnitTests.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\klaudia\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
+    "C:\\Users\\klaudia\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",

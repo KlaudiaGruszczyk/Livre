@@ -13,6 +13,14 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using Application.UsersCQRS.Commands.RegisterUser;
+using Application.UsersCQRS.Commands.ChangeLogin;
+using Application.UsersCQRS.Commands.ChangePassword;
+using FluentAssertions.Common;
+using Application.UsersCQRS.Commands.ChangeEmail;
+using Application.UsersCQRS.Commands.CreateUser;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +41,12 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddScoped<IValidator<ChangeLoginCommand>, ChangeLoginCommandValidator>();
+builder.Services.AddScoped<IValidator<RegisterUserCommand>, RegisterUserCommandValidator>();
+builder.Services.AddScoped<IValidator<ChangeEmailCommand>, ChangeEmailCommandValidator>();
+builder.Services.AddScoped<IValidator<ChangePasswordCommand>, ChangePasswordCommandValidator>();
 builder.Services.AddSingleton(builder.Configuration);
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

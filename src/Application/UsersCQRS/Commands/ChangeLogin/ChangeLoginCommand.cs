@@ -1,5 +1,6 @@
 ﻿using MediatR;
 
+
 namespace Application.UsersCQRS.Commands.ChangeLogin
 {
     public class ChangeLoginCommand : IRequest<string>
