@@ -1,17 +1,25 @@
-﻿using FluentValidation;
+﻿using Application.Common.Interfaces;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.UsersCQRS.Commands.ChangeEmail
 {
     public class ChangeEmailCommandValidator : AbstractValidator<ChangeEmailCommand>
     {
-        public void ChangeEmailValidator()
+        public void ChangeEmailValidator(IApplicationDbContext dbContext)
         {
-            RuleFor(x => x.UserId).NotEmpty().NotNull()
-                .WithMessage("UserId cannot be empty or null and must be a valid Guid.");
 
             RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Email address is required.")
-                .EmailAddress().WithMessage("Invalid email address.");
+                   .NotEmpty().WithMessage("Email address is required.")
+                   .EmailAddress().WithMessage("Invalid email address.")
+                   .Custom((value, context) =>
+                   {
+                       var emailInUse = dbContext.Users.Any(u => u.Email == value);
+                       if (emailInUse)
+                       {
+                           context.AddFailure("Email", "The email is taken");
+                       }
+                   });
         }
     }
 }

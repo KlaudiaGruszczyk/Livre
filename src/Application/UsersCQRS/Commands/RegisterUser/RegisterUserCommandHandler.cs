@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Enums;
 using FluentValidation;
 using Application.UsersCQRS.Commands.RegisterUser;
+using System.ComponentModel.DataAnnotations;
+using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
 namespace Application.UsersCQRS.Commands.CreateUser
 {
@@ -27,8 +29,15 @@ namespace Application.UsersCQRS.Commands.CreateUser
 
         public async Task<Guid> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
-          
+            var validator = new RegisterUserCommandValidator(_dbContext);
 
+            var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
+            }
             var user = await _dbContext.Users.SingleOrDefaultAsync((item)=> item.Login == command.Login);
             
             if (user == null) {

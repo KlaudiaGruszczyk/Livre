@@ -17,11 +17,15 @@ namespace Application.UsersCQRS.Commands.ChangeLogin
         public async Task<string> Handle(ChangeLoginCommand command, CancellationToken cancellationToken)
         {
             var validator = new ChangeLoginCommandValidator();
+
             var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
             if (!validationResult.IsValid)
             {
-                throw new ValidationException(validationResult.Errors);
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
             }
+
             var user = _dbContext.Users.Where(a => a.UserId == command.UserId).FirstOrDefault();
 
             if (user == null)

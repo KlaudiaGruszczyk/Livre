@@ -18,11 +18,15 @@ namespace Application.UsersCQRS.Commands.ChangeEmail
         public async Task<string> Handle(ChangeEmailCommand command, CancellationToken cancellationToken)
         {
             var validator = new ChangeEmailCommandValidator();
+
             var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
             if (!validationResult.IsValid)
             {
-                throw new ValidationException(validationResult.Errors);
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
             }
+
             var user = _dbContext.Users.Where(a => a.UserId== command.UserId).FirstOrDefault();
 
             if (user == null)
