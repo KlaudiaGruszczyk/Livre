@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ua2nxfcZjUwykkw1w/CZ9Xe77r9wUmMfxIR8mwKOsTlgEe4kxXqHvssaTJaNFl2gK3VrxULLa4zXzmR6kg90rA==",
+  "dgSpecHash": "DKGK1agJzPlmwEysLXg1kTOJ8D6HPMrtlPz17V66iFIDRhnghl9c2prNCEEvRCpHXi7Orqer0bX2JaxWqh8Lvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\klaudia\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
+    "C:\\Users\\klaudia\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
+    "C:\\Users\\klaudia\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

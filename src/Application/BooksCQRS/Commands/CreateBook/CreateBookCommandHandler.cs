@@ -1,6 +1,8 @@
 ﻿using Application.AuthorsCQRS.Commands.CreateAuthor;
 using Application.Common.Interfaces;
+using Application.UsersCQRS.Commands.RegisterUser;
 using Domain.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,15 @@ namespace Application.BooksCQRS.Commands.CreateBook
 
         public async Task<Guid> Handle(CreateBookCommand command, CancellationToken cancellationToken)
         {
+            var validator = new CreateBookCommandValidator();
+
+            var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
+            }
 
             using (var transaction = await _dbContext.Database.BeginTransactionAsync())
             {
