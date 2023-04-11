@@ -2,7 +2,7 @@
 
 namespace Application.BooksCQRS.Commands.CreateBook
 {
-    public class CreateBookCommand                                                                                                   : IRequest<Guid>
+    public class CreateBookCommand : IRequest<Guid>
     {
         public string Title { get; set; }
         public string AuthorName { get; set; }
