@@ -1,4 +1,6 @@
 ﻿using Application.Common.Interfaces;
+using Application.UsersCQRS.Commands.ChangeLogin;
+using FluentValidation;
 using MediatR;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -14,7 +16,15 @@ namespace Application.UsersCQRS.Commands.ChangePassword
 
         public async Task<bool> Handle(ChangePasswordCommand command, CancellationToken cancellationToken)
         {
-            
+            var validator = new ChangePasswordCommandValidator();
+
+            var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
+            }
 
             var user = await _dbContext.Users.FindAsync(command.UserId);
             if (user == null)

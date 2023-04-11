@@ -1,4 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.BooksCQRS.Commands.CreateBook;
+using Application.Common.Interfaces;
+using FluentValidation;
 using MediatR;
 
 namespace Application.BooksCQRS.Commands.UpdateBook
@@ -13,6 +15,16 @@ namespace Application.BooksCQRS.Commands.UpdateBook
 
         public async Task<Guid> Handle(UpdateBookCommand command, CancellationToken cancellationToken)
         {
+            var validator = new UpdateBookCommandValidator();
+
+            var validationResult = await validator.ValidateAsync(command, cancellationToken);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new ValidationException(errors);
+            }
+
             var book = _dbContext.Books.Where(a => a.BookId == command.BookId).FirstOrDefault();
             if (book == null)
             {

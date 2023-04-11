@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DT0o8wiwnb2ZCz1Z2/Lx77hCeKyfdRjJNWx4e468QsEAE9wpnKq4Xdli2JVcJpJlxKgUqv6rVekBedJMUBa3rQ==",
+  "dgSpecHash": "EEqtPs9rRcnlXkizSy46exbV0i59TdXiIuXd7rb22hGO+adM0sDbKXE+3oUJxXfVdjOektYFcnKjgBXhLP9Cyw==",
   "success": true,
   "projectFilePath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\klaudia\\.nuget\\packages\\duende.identityserver.entityframework\\6.0.4\\duende.identityserver.entityframework.6.0.4.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\duende.identityserver.entityframework.storage\\6.0.4\\duende.identityserver.entityframework.storage.6.0.4.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\duende.identityserver.storage\\6.0.4\\duende.identityserver.storage.6.0.4.nupkg.sha512",
+    "C:\\Users\\klaudia\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
     "C:\\Users\\klaudia\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
