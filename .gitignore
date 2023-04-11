@@ -19,3 +19,9 @@ packages/
 *.suo
 *.cache
 *.vs/
+<<<<<<< Updated upstream
+=======
+/.vs/LIVRE/v17/.suo
+/src/API/obj/API.csproj.nuget.dgspec.json
+/src/API/obj/project.nuget.cache
+>>>>>>> Stashed changes
