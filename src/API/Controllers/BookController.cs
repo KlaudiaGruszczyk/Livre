@@ -76,7 +76,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("CreateBook")]
         public async Task<ActionResult<int>> CreateBook(CreateBookCommand command)
         {

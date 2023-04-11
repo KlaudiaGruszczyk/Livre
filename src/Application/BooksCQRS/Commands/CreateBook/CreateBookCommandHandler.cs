@@ -20,6 +20,8 @@ namespace Application.BooksCQRS.Commands.CreateBook
 
         public async Task<Guid> Handle(CreateBookCommand command, CancellationToken cancellationToken)
         {
+            Guid authorId;
+
             var validator = new CreateBookCommandValidator();
 
             var validationResult = await validator.ValidateAsync(command, cancellationToken);
@@ -37,7 +39,7 @@ namespace Application.BooksCQRS.Commands.CreateBook
                 {
                     var existingAuthor = await _dbContext.Authors.FirstOrDefaultAsync(a => a.Name == command.AuthorName);
 
-                    Guid authorId;
+                    
 
                     if (existingAuthor != null)
                     {
@@ -45,8 +47,18 @@ namespace Application.BooksCQRS.Commands.CreateBook
                     }
                     else
                     {
-                        var createAuthorCommand = new CreateAuthorCommandHandler(_dbContext);
-                        authorId = (Guid)await _mediator.Send(createAuthorCommand);
+                       var author = new Author
+                       {
+                            AuthorId = Guid.NewGuid(),
+                            Name = command.AuthorName,
+                            Bio = "do uzupełnienia"
+                        };
+
+                        _dbContext.Authors.AddAsync(author);
+                        await _dbContext.SaveChangesAsync(cancellationToken);
+                        authorId = author.AuthorId;
+                        
+                        
                     }
 
                     var book = new Book
@@ -62,8 +74,8 @@ namespace Application.BooksCQRS.Commands.CreateBook
 
                     _dbContext.Books.AddAsync(book);
                     await _dbContext.SaveChangesAsync(cancellationToken);
-                    return (Guid)book.BookId;
                     await transaction.CommitAsync();
+                    return (Guid)book.BookId;
                 }
                 catch (Exception)
                 {

@@ -250,3 +250,10 @@ C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\obj\Debug\net7.0
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\obj\Debug\net7.0\Application.UnitTests.pdb
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\obj\Debug\net7.0\Application.UnitTests.genruntimeconfig.cache
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\obj\Debug\net7.0\ref\Application.UnitTests.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\System.Security.Permissions.dll
