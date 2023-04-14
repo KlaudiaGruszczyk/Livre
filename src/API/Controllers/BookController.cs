@@ -1,6 +1,12 @@
 ﻿using Application.BooksCQRS.Commands.CreateBook;
 using Application.BooksCQRS.Commands.DeleteBook;
 using Application.BooksCQRS.Commands.UpdateBook;
+using Application.BooksCQRS.Commands.UpdateBookAuthor;
+using Application.BooksCQRS.Commands.UpdateBookCategory;
+using Application.BooksCQRS.Commands.UpdateBookDescription;
+using Application.BooksCQRS.Commands.UpdateBookPublishedDate;
+using Application.BooksCQRS.Commands.UpdateBookPublisher;
+using Application.BooksCQRS.Commands.UpdateBookTitle;
 using Application.BooksCQRS.Queries.GetAllBooks;
 using Application.BooksCQRS.Queries.GetBookByAuthor;
 using Application.BooksCQRS.Queries.GetBookByCategory;
@@ -67,17 +73,62 @@ namespace API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBook")]
-        public async Task<ActionResult> UpdateBook([FromQuery] Guid id, UpdateBookCommand command)
+        public async Task<ActionResult> UpdateBook(UpdateBookCommand command)
         {
-            if (id != command.BookId)
-            {
-                return BadRequest();
-            }
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookTitle")]
+        public async Task<ActionResult> UpdateBookTitle( UpdateBookTitleCommand command)
+        {
+            
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookAuthor")]
+        public async Task<ActionResult> UpdateBookAuthor( UpdateBookAuthorNameCommand command)
+        {
+           
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookPublishedDate")]
+        public async Task<ActionResult> UpdateBookPublishedDate(UpdateBookPublishedDateCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookPublisher")]
+        public async Task<ActionResult> UpdateBookPublisher(UpdateBookPublisherCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookCategory")]
+        public async Task<ActionResult> UpdateBookCategory(UpdateBookCategoryCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookDescription")]
+        public async Task<ActionResult> UpdateBookDescription(UpdateBookDescriptionCommand command)
+        { 
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateBook")]
         public async Task<ActionResult<int>> CreateBook(CreateBookCommand command)
         {
