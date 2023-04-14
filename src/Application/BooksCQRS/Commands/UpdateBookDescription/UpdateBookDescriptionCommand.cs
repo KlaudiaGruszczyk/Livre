@@ -1,6 +1,10 @@
-﻿namespace Application.BooksCQRS.Commands.UpdateBookDescription
+﻿using MediatR;
+
+namespace Application.BooksCQRS.Commands.UpdateBookDescription
 {
-    public class UpdateBookAuthorNameCommand
+    public class UpdateBookDescriptionCommand : IRequest<string>
     {
+        public Guid BookId { get; set; }
+        public string Description { get; set; }
     }
 }
