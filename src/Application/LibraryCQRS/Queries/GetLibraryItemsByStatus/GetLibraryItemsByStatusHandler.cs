@@ -1,13 +1,14 @@
 ﻿using Application.BooksCQRS.Queries.GetBookById;
 using Application.Common.Interfaces;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Repositories;
 using MediatR;
 
 namespace Application.LibraryCQRS.Queries.GetLibraryItemsByStatus
 {
 
-    public class GetLibraryItemsByStatusHandler : IRequestHandler<GetLibraryItemsByStatusQuery, GetLibraryItemsByStatusDTO>
+    public class GetLibraryItemsByStatusHandler : IRequestHandler<GetLibraryItemsByStatusQuery, IList<GetLibraryItemsByStatusDTO>>
     {
         private readonly ILibraryRepository _libraryRepository;
         private readonly IMapper _mapper;
@@ -19,10 +20,10 @@ namespace Application.LibraryCQRS.Queries.GetLibraryItemsByStatus
             _mapper = mapper;
             _dbContext = dbContext;
         }
-        public async Task<GetLibraryItemsByStatusDTO> Handle(GetLibraryItemsByStatusQuery request, CancellationToken cancellationToken)
+        public async Task<IList<GetLibraryItemsByStatusDTO>> Handle(GetLibraryItemsByStatusQuery request, CancellationToken cancellationToken)
         {
-            var baseQuery = _libraryRepository.GetLibraryItemsByStatus<GetLibraryItemsByStatusDTO>(request.Status);
-            return _mapper.Map<GetLibraryItemsByStatusDTO>(baseQuery);
+            var baseQuery = _libraryRepository.GetLibraryItemsByStatus<Library>(request.Status);
+            return _mapper.Map<List<GetLibraryItemsByStatusDTO>>(baseQuery);
         }
 
     }

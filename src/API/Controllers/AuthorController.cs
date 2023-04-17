@@ -1,6 +1,8 @@
 ﻿using Application.AuthorsCQRS.Commands.CreateAuthor;
 using Application.AuthorsCQRS.Commands.DeleteAuthor;
 using Application.AuthorsCQRS.Commands.UpdateAuthor;
+using Application.AuthorsCQRS.Commands.UpdateAuthorBio;
+using Application.AuthorsCQRS.Commands.UpdateAuthorName;
 using Application.AuthorsCQRS.Queries.GetAllAuthors;
 using Application.AuthorsCQRS.Queries.GetAuthorById;
 using Application.AuthorsCQRS.Queries.GetAuthorByName;
@@ -51,14 +53,30 @@ namespace API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthor")]
-        public async Task<ActionResult> UpdateAuthor([FromQuery] Guid id, UpdateAuthorCommand command)
+        public async Task<ActionResult> UpdateAuthor(UpdateAuthorCommand command)
         {
-            if (id != command.AuthorId)
-            {
-                return BadRequest();
-            }
+           
             return Ok(await Mediator.Send(command));
         }
+
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpPut("UpdateAuthorName")]
+        public async Task<ActionResult> UpdateAuthorName(UpdateAuthorNameCommand command)
+        {
+
+            return Ok(await Mediator.Send(command));
+        }
+
+        [AllowAnonymous]
+        //Authorize(Roles = "Admin")]
+        [HttpPut("UpdateAuthorBio")]
+        public async Task<ActionResult> UpdateAuthorBio(UpdateAuthorBioCommand command)
+        {
+
+            return Ok(await Mediator.Send(command));
+        }
+        
 
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateAuthor")]
