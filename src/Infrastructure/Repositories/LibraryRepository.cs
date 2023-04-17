@@ -72,14 +72,7 @@ namespace Infrastructure.Repositories
         public List<T> GetLibraryItemsByStatus<T>(ReadingStatus status)
         {
             var baseQuery = _dbContext.UsersLibraryItems
-             .Where(item => item.ReadingStatus == status)
-             .Select(item => new GetLibraryItemsByStatusDTO()
-             {
-                 LibraryItemId = item.LibraryItemId,
-                 ReadingStatus = item.ReadingStatus,
-                 UserId = item.UserId,
-                 BookId = item.BookId
-             }).AsEnumerable();
+             .Where(item => item.ReadingStatus == status).AsEnumerable();
 
             return baseQuery.OfType<T>().ToList();
         }

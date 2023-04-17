@@ -35,7 +35,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddApplicationServices();
 //builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ApplicationSeeder>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ApplicationMappingProfile>());
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

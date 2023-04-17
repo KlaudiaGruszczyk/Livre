@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.LibraryCQRS.Queries.GetLibraryItemsByStatus
 {
-    public class GetLibraryItemsByStatusQuery : IRequest<GetLibraryItemsByStatusDTO>
+    public class GetLibraryItemsByStatusQuery : IRequest<IList<GetLibraryItemsByStatusDTO>>
     {
         public ReadingStatus Status { get; set; }
     }

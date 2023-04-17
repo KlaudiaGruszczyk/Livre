@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using FluentValidation;
 using Application.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.BooksCQRS.Commands.UpdateBookAuthor
 {
@@ -24,7 +25,7 @@ namespace Application.BooksCQRS.Commands.UpdateBookAuthor
                 throw new ValidationException(errors);
             }
 
-            var book = _dbContext.Books.Where(a=> a.BookId== command.BookId).FirstOrDefault();
+            var book = _dbContext.Books.Include(b => b.Author).Where(a=> a.BookId== command.BookId).FirstOrDefault();
 
             if (book == null)
             {

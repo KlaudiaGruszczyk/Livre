@@ -46,10 +46,7 @@ namespace Infrastructure.Persistence
             CreateMap<Author, CreateAuthorCommand>();
             CreateMap<CreateAuthorCommand, Author>();
 
-            var readingStatus = new ReadingStatus();
-
-            CreateMap<Library, GetLibraryItemsByStatusDTO>()
-                .ForMember(m=>m.ReadingStatus, c=> c.MapFrom(s=> readingStatus));
+            CreateMap<Library, GetLibraryItemsByStatusDTO>();
             CreateMap<GetLibraryItemsByStatusDTO, Library>();
 
 
