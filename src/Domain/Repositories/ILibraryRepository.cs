@@ -9,6 +9,7 @@ namespace Domain.Repositories
         List<T> GetLibraryItemsByBook<T>(Guid bookId);
         List<T> GetLibraryItemsByStatus<T>(ReadingStatus status);
         List<T> GetLibraryItemsByUser<T>(Guid bookId);
+        List<T> GetLibraryItemsByUserAndStatus<T>(Guid userId, ReadingStatus status);
 
 
     }

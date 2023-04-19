@@ -11,6 +11,7 @@ using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByStatus;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByUser;
+using Application.LibraryCQRS.Queries.GetLibraryItemsByUserAndStatus;
 using Domain.Enums;
 using Domain.Repositories;
 using MediatR;
@@ -98,6 +99,14 @@ namespace API.Controllers
         {
             var result = await Mediator.Send(new DeleteLibraryItemCommand { LibraryItemId = id });
             return Ok(result);
+        }
+
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, Moderator, User")]
+        [HttpGet("GetLibraryItemsByUserAndStatus")]
+        public async Task<ActionResult> GetLibraryItemsByUserAndStatus([FromQuery] Guid userId, [FromQuery] ReadingStatus readingStatus)
+        {
+            return Ok(await Mediator.Send(new GetLibraryItemsByUserAndStatusQuery { UserId = userId, ReadingStatus = readingStatus }));
         }
     }
 }

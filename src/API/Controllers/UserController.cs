@@ -9,6 +9,7 @@ using Application.UsersCQRS.Commands.ChangePassword;
 using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Commands.DeleteUser;
 using Application.UsersCQRS.Commands.LoginUser;
+using Application.UsersCQRS.Commands.UpdateRole;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserByEmail;
 using Application.UsersCQRS.Queries.GetUserById;
@@ -96,6 +97,14 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateUserRole")]
+        public async Task<ActionResult> UpdateUserRole(UpdateRoleCommand command)
+        {
+
+            return Ok(await Mediator.Send(command));
+        }
         [Authorize(Roles = "Admin, User, Moderator")]
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<int>> DeleteUser(Guid id)

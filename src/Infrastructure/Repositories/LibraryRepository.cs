@@ -4,6 +4,7 @@ using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByStatus;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByUser;
+using Application.LibraryCQRS.Queries.GetLibraryItemsByUserAndStatus;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserById;
 using AutoMapper;
@@ -87,6 +88,24 @@ namespace Infrastructure.Repositories
                     ReadingStatus = item.ReadingStatus,
                     UserId = item.UserId,
                     BookId = item.BookId
+                }).OfType<T>()
+                 .ToList();
+
+            return baseQuery;
+        }
+
+        public List<T> GetLibraryItemsByUserAndStatus<T> (Guid userId, ReadingStatus status)
+        {
+            var baseQuery = _dbContext.UsersLibraryItems
+                .Where(item => item.UserId == userId && item.ReadingStatus == status)
+                .Include(book => book.Book)
+                .Select(item => new GetLibraryItemsByUserAndStatusDTO()
+                {
+                    LibraryItemId = item.LibraryItemId,
+                    ReadingStatus = item.ReadingStatus,
+                    UserId = item.UserId,
+                    BookId = item.BookId,
+                    Title = item.Book.Title
                 }).OfType<T>()
                  .ToList();
 

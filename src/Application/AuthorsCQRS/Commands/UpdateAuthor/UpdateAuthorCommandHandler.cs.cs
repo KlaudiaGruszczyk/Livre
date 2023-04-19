@@ -15,8 +15,11 @@ namespace Application.AuthorsCQRS.Commands.UpdateAuthor
         public async Task<Guid> Handle(UpdateAuthorCommand command, CancellationToken cancellationToken)
         {
             
-            var author = _dbContext.Authors
-
+            var author = _dbContext.Authors.Where(a=>a.AuthorId == command.AuthorId).FirstOrDefault();
+            if(author == null)
+            {
+                throw new Exception("Author not found"); 
+            }
             
             await _dbContext.Authors.AddAsync(author);
             await _dbContext.SaveChangesAsync(cancellationToken);
