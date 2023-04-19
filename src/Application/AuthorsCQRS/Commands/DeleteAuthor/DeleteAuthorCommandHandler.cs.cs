@@ -16,7 +16,10 @@ namespace Application.AuthorsCQRS.Commands.DeleteAuthor
         public async Task<Guid> Handle(DeleteAuthorCommand command, CancellationToken cancellationToken)
         {
             var author = await _dbContext.Authors.Where(a => a.AuthorId == command.AuthorId).FirstOrDefaultAsync();
-            if (author == null) return default;
+            if (author == null)
+            { 
+                throw new Exception("Author not found");
+            }
             _dbContext.Authors.Remove(author);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return (Guid)author.AuthorId;

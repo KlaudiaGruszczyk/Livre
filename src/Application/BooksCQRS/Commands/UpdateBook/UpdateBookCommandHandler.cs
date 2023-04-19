@@ -28,7 +28,7 @@ namespace Application.BooksCQRS.Commands.UpdateBook
             var book = _dbContext.Books.Where(a => a.BookId == command.BookId).FirstOrDefault();
             if (book == null)
             {
-                return default;
+                throw new Exception("Book not found");
             }
 
             else

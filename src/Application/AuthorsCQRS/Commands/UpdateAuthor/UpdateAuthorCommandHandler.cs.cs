@@ -15,12 +15,9 @@ namespace Application.AuthorsCQRS.Commands.UpdateAuthor
         public async Task<Guid> Handle(UpdateAuthorCommand command, CancellationToken cancellationToken)
         {
             
-            var author = new Author     
-            { 
-                AuthorId = new Guid(),
-                Name= command.Name,
-                Bio = command.Bio
-            };
+            var author = _dbContext.Authors
+
+            
             await _dbContext.Authors.AddAsync(author);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
