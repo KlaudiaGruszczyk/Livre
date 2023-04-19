@@ -43,7 +43,8 @@ namespace Application.UsersCQRS.Commands.LoginUser
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
+                new Claim("Id", user.UserId.ToString()),
                 // Add any additional claims that you need here
             };
 
