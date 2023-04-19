@@ -24,12 +24,12 @@ namespace Application.BooksCQRS.Commands.UpdateBookAuthor
                 var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
                 throw new ValidationException(errors);
             }
-
+            
             var book = _dbContext.Books.Include(b => b.Author).Where(a=> a.BookId== command.BookId).FirstOrDefault();
 
             if (book == null)
             {
-                return default;
+                throw new Exception("Book not found");
             }
 
             else
