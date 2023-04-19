@@ -8,6 +8,7 @@ using Application.BooksCQRS.Queries.GetBookById;
 using Application.BooksCQRS.Queries.GetBookByKeyWord;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByStatus;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByUser;
+using Application.LibraryCQRS.Queries.GetLibraryItemsByUserAndStatus;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
@@ -52,6 +53,7 @@ namespace Infrastructure.Persistence
 
             CreateMap<Library, GetLibraryItemsByUserDTO>();
             CreateMap<GetLibraryItemsByUserDTO, Library>();
+            
 
 
         }
