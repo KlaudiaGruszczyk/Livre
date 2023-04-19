@@ -98,7 +98,7 @@ namespace Infrastructure.Repositories
         {
             var baseQuery = _dbContext.UsersLibraryItems
                 .Where(item => item.UserId == userId && item.ReadingStatus == status)
-                .Include(book => book.Book.Title)
+                .Include(book => book.Book)
                 .Select(item => new GetLibraryItemsByUserAndStatusDTO()
                 {
                     LibraryItemId = item.LibraryItemId,
