@@ -3,6 +3,7 @@ using Application.BooksCQRS.Commands.DeleteBook;
 using Application.BooksCQRS.Commands.UpdateBook;
 using Application.BooksCQRS.Queries.GetAllBooks;
 using Application.BooksCQRS.Queries.GetBookById;
+using Application.LibraryCQRS.Commands.AddLibraryItemByUser;
 using Application.LibraryCQRS.Commands.CreateLibraryItem;
 using Application.LibraryCQRS.Commands.DeleteLibraryItem;
 using Application.LibraryCQRS.Commands.UpdateLibraryItem;
@@ -88,6 +89,15 @@ namespace API.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateLibraryItem")]
         public async Task<ActionResult<Guid>> CreateLibraryItem(CreateLibraryItemCommand command)
+        {
+            var result = await Mediator.Send(command);
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, User, Moderator")]
+        [HttpPost("AddLibraryItemByUser")]
+        public async Task<ActionResult<Guid>> AddLibraryItemByUser (AddLibraryItemByUserCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);

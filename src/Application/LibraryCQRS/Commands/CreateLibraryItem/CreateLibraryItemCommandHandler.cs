@@ -32,10 +32,9 @@ namespace Application.LibraryCQRS.Commands.CreateLibraryItem
             var item = new Library();
 
             item.LibraryItemId = Guid.NewGuid();
-
             item.ReadingStatus = command.ReadingStatus;
             item.UserId = command.UserId;
-            item.UserId = command.UserId;
+            item.BookId = command.BookId;
 
             _dbContext.UsersLibraryItems.Add(item);
             await _dbContext.SaveChangesAsync(cancellationToken);

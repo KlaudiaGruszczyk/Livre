@@ -21,6 +21,7 @@ using Application.UsersCQRS.Commands.ChangePassword;
 using FluentAssertions.Common;
 using Application.UsersCQRS.Commands.ChangeEmail;
 using Application.UsersCQRS.Commands.CreateUser;
+using Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,9 @@ builder.Services.AddScoped<IValidator<RegisterUserCommand>, RegisterUserCommandV
 builder.Services.AddScoped<IValidator<ChangeEmailCommand>, ChangeEmailCommandValidator>();
 builder.Services.AddScoped<IValidator<ChangePasswordCommand>, ChangePasswordCommandValidator>();
 builder.Services.AddSingleton(builder.Configuration);
+builder.Services.AddScoped<IUserContext, UserContext>();
+builder.Services.AddHttpContextAccessor();
+
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
