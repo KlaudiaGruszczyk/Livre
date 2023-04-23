@@ -112,6 +112,8 @@ app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
 
 var seeder = scope.ServiceProvider.GetRequiredService<ApplicationSeeder>();
 seeder.Seed();

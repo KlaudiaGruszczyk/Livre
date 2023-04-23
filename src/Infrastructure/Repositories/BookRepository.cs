@@ -1,4 +1,5 @@
 ﻿using Application.BooksCQRS.Queries.GetAllBooks;
+using Application.BooksCQRS.Queries.GetAllBooksFullInfo;
 using Application.BooksCQRS.Queries.GetBookByAuthor;
 using Application.BooksCQRS.Queries.GetBookByCategory;
 using Application.BooksCQRS.Queries.GetBookById;
@@ -29,6 +30,23 @@ namespace Infrastructure.Repositories
                 {
                     Title = item.Title,
                     Author = item.Author.Name
+                }).ToListAsync();
+
+            return baseQuery.Cast<T>().ToList();
+        }
+
+        public async Task<List<T>> GetAllBooksFullInfo<T>()
+        {
+            var baseQuery = await _dbContext.Books
+                .Select(item => new GetAllBooksFullInfoDTO()
+                {
+                    BookId = item.BookId,
+                    Title = item.Title,
+                    AuthorName = item.Author.Name,
+                    Description = item.Description,
+                    PublishedDate = item.PublishedDate,
+                    Category = item.Category,
+                    Publisher = item.Publisher
                 }).ToListAsync();
 
             return baseQuery.Cast<T>().ToList();
