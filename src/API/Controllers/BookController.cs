@@ -83,12 +83,14 @@ namespace API.Controllers
         {
             return Ok(await Mediator.Send(new GetBookByCategoryQuery { Category = category }));
         }
+
         [AllowAnonymous]
         //[Authorize(Roles = "Admin")]
         [HttpPut("UpdateBook/{id}")]
-        public async Task<ActionResult> UpdateBook([FromRoute] Guid id)
+        public async Task<ActionResult> UpdateBook([FromRoute] Guid id, [FromBody] UpdateBookCommand command)
         {
-            var result = await Mediator.Send(new UpdateBookCommand { BookId = id });
+            command.BookId = id;
+            var result = await Mediator.Send(command);
             return Ok(result);
         }
 

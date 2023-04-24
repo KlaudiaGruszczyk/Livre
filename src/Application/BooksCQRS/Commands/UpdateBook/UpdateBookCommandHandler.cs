@@ -26,6 +26,10 @@ namespace Application.BooksCQRS.Commands.UpdateBook
             }
 
             var book = _dbContext.Books.Where(a => a.BookId == command.BookId).FirstOrDefault();
+            var author = await _dbContext.Authors.FindAsync(book.AuthorId);
+
+          
+
             if (book == null)
             {
                 throw new Exception("Book not found");
@@ -33,7 +37,7 @@ namespace Application.BooksCQRS.Commands.UpdateBook
 
             else
             {
-                //book.BookId = command.BookId;
+                book.BookId = command.BookId;
                 book.Title = command.Title;
                 book.Author.Name = command.AuthorName;
                 book.Description = command.Description;
