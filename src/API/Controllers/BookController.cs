@@ -8,6 +8,7 @@ using Application.BooksCQRS.Commands.UpdateBookPublishedDate;
 using Application.BooksCQRS.Commands.UpdateBookPublisher;
 using Application.BooksCQRS.Commands.UpdateBookTitle;
 using Application.BooksCQRS.Queries.GetAllBooks;
+using Application.BooksCQRS.Queries.GetAllBooksFullInfo;
 using Application.BooksCQRS.Queries.GetBookByAuthor;
 using Application.BooksCQRS.Queries.GetBookByCategory;
 using Application.BooksCQRS.Queries.GetBookById;
@@ -20,7 +21,9 @@ using System.Data;
 
 namespace API.Controllers
 {
-    
+    [ApiController]
+    [Route("[controller]")]
+
     public class BookController : ControllerBase
     {
         private IMediator _mediator;
@@ -43,9 +46,19 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet("GetBookById")]
-        public async Task<ActionResult> GetBookById([FromQuery] Guid id)
+        [AllowAnonymous]
+        [HttpGet("GetAllBooksFullInfo")]
+        public async Task<ActionResult> GetAllBooksFullInfo()
+        {
+            var query = new GetAllBooksFullInfoQuery();
+            var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpGet("GetBookById/{id}")]
+        public async Task<ActionResult> GetBookById([FromRoute] Guid id)
         {
             return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
         }
@@ -70,12 +83,13 @@ namespace API.Controllers
         {
             return Ok(await Mediator.Send(new GetBookByCategoryQuery { Category = category }));
         }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPut("UpdateBook")]
-        public async Task<ActionResult> UpdateBook(UpdateBookCommand command)
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBook/{id}")]
+        public async Task<ActionResult> UpdateBook([FromRoute] Guid id)
         {
-            return Ok(await Mediator.Send(command));
+            var result = await Mediator.Send(new UpdateBookCommand { BookId = id });
+            return Ok(result);
         }
 
         [Authorize(Roles = "Admin")]
@@ -127,8 +141,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("CreateBook")]
         public async Task<ActionResult<int>> CreateBook(CreateBookCommand command)
         {
@@ -136,9 +150,10 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpDelete("DeleteBook")]
-        public async Task<ActionResult<int>> DeleteBook(Guid id)
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpDelete("DeleteBook/{id}")]
+        public async Task<ActionResult<int>> DeleteBook([FromRoute] Guid id)
         {
             var result = await Mediator.Send(new DeleteBookCommand { BookId = id });
             return Ok(result);
