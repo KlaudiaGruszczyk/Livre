@@ -22,6 +22,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private IMediator _mediator;
@@ -67,7 +69,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<ActionResult> LoginUser(LoginUserCommand command)
+        public async Task<ActionResult> LoginUser([FromBody] LoginUserCommand command)
         {
             var result = await Mediator.Send(command);
             return Ok(result);
