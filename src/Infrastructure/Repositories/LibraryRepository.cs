@@ -82,12 +82,11 @@ namespace Infrastructure.Repositories
         {
             var baseQuery = _dbContext.UsersLibraryItems
                 .Where(item => item.UserId == userId)
+                .Include(book => book.Book)
                 .Select(item => new GetLibraryItemsByUserDTO()
                 {
-                    LibraryItemId = item.LibraryItemId,
                     ReadingStatus = item.ReadingStatus,
-                    UserId = item.UserId,
-                    BookId = item.BookId
+                    Title = item.Book.Title
                 }).OfType<T>()
                  .ToList();
 

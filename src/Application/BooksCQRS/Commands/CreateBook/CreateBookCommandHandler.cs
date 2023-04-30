@@ -69,7 +69,9 @@ namespace Application.BooksCQRS.Commands.CreateBook
                         PublishedDate = command.PublishedDate,
                         Category = command.Category,
                         Publisher = command.Publisher,
-                        AuthorId = authorId
+                        AuthorId = authorId,
+                        ImageUrl = command.ImageUrl,
+                        PdfUrl= command.PdfUrl
                     };
 
                     _dbContext.Books.AddAsync(book);

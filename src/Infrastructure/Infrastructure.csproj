@@ -13,22 +13,18 @@
     <Compile Remove="Files\**" />
     <Compile Remove="Persistence\Configurations\**" />
     <Compile Remove="Persistence\Migrations\**" />
-    <Compile Remove="Services\**" />
     <Content Remove="Common\**" />
     <Content Remove="Files\**" />
     <Content Remove="Persistence\Configurations\**" />
     <Content Remove="Persistence\Migrations\**" />
-    <Content Remove="Services\**" />
     <EmbeddedResource Remove="Common\**" />
     <EmbeddedResource Remove="Files\**" />
     <EmbeddedResource Remove="Persistence\Configurations\**" />
     <EmbeddedResource Remove="Persistence\Migrations\**" />
-    <EmbeddedResource Remove="Services\**" />
     <None Remove="Common\**" />
     <None Remove="Files\**" />
     <None Remove="Persistence\Configurations\**" />
     <None Remove="Persistence\Migrations\**" />
-    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,8 +48,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Minio" Version="4.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

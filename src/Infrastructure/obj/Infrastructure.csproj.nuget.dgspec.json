@@ -92,6 +92,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Minio": {
+              "target": "Package",
+              "version": "[4.0.7, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -199,6 +203,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Minio": {
+              "target": "Package",
+              "version": "[4.0.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -332,6 +340,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Minio": {
+              "target": "Package",
+              "version": "[4.0.7, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -339,6 +351,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.27.0, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

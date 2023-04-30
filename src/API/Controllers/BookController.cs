@@ -4,6 +4,9 @@ using Application.BooksCQRS.Commands.UpdateBook;
 using Application.BooksCQRS.Commands.UpdateBookAuthor;
 using Application.BooksCQRS.Commands.UpdateBookCategory;
 using Application.BooksCQRS.Commands.UpdateBookDescription;
+using Application.BooksCQRS.Commands.UpdateBookPdfUrl;
+using Application.BooksCQRS.Commands.UdateBookImageUrl;
+
 using Application.BooksCQRS.Commands.UpdateBookPublishedDate;
 using Application.BooksCQRS.Commands.UpdateBookPublisher;
 using Application.BooksCQRS.Commands.UpdateBookTitle;
@@ -94,15 +97,28 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpPut("UpdateBookTitle")]
-        public async Task<ActionResult> UpdateBookTitle( UpdateBookTitleCommand command)
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookPdfUrl")]
+        public async Task<ActionResult> UpdateBookPdfUrl(UpdateBookPdfUrlCommand command)
         {
-            
+            return Ok(await Mediator.Send(command));
+        }
+        [AllowAnonymous]
+        [HttpPut("UpdateBookImgUrl")]
+        public async Task<ActionResult> UpdateBookImageUrl(UpdateBookImageUrlCommand command)
+        {
             return Ok(await Mediator.Send(command));
         }
 
 
+        [Authorize(Roles = "Admin")]
+        [HttpPut("UpdateBookTitle")]
+        public async Task<ActionResult> UpdateBookImgUrl(UpdateBookTitleCommand command)
+        {
+
+            return Ok(await Mediator.Send(command));
+        }
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookAuthor")]
         public async Task<ActionResult> UpdateBookAuthor( UpdateBookAuthorNameCommand command)

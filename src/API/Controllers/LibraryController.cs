@@ -7,6 +7,7 @@ using Application.LibraryCQRS.Commands.AddLibraryItemByUser;
 using Application.LibraryCQRS.Commands.CreateLibraryItem;
 using Application.LibraryCQRS.Commands.DeleteLibraryItem;
 using Application.LibraryCQRS.Commands.UpdateLibraryItem;
+using Application.LibraryCQRS.Commands.UpdateReadingStatusByUser;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
@@ -23,6 +24,8 @@ using System.Data;
 
 namespace API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class LibraryController : ControllerBase
     {
         private IMediator _mediator;
@@ -60,7 +63,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetLibraryItemsByBookQuery { Id = bookId }));
         }
 
-        [Authorize(Roles = "User, Admin, Moderator")]
+        [AllowAnonymous ]
+        //[Authorize(Roles = "User, Admin, Moderator")]
         [HttpGet("GetLibraryItemsByUser")]
 
         public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] Guid userId)
@@ -85,6 +89,17 @@ namespace API.Controllers
             }
             return Ok(await Mediator.Send(command));
         }
+
+        [AllowAnonymous]
+        [HttpPut("UpdateReadingStatusByUser")]
+        public async Task<IActionResult> UpdateReadingStatus([FromBody]UpdateReadingStatusByUserCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+
 
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateLibraryItem")]
