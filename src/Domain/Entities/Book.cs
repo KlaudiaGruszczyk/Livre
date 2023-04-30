@@ -11,6 +11,10 @@
         public string Category { get; set; }
         public string Publisher { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public string PdfUrl { get; set; }
+
         public virtual Author Author { get; set; }
 
         public virtual ICollection<Library> UserLibrary { get; set; }

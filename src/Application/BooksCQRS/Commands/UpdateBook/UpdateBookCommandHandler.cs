@@ -44,6 +44,8 @@ namespace Application.BooksCQRS.Commands.UpdateBook
                 book.PublishedDate = command.PublishedDate;
                 book.Category = command.Category;
                 book.Publisher = command.Publisher;
+                book.ImageUrl = command.ImageUrl;
+                book.PdfUrl = command.PdfUrl;
                 await _dbContext.SaveChangesAsync(cancellationToken);
                 return (Guid)book.BookId;
 

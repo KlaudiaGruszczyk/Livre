@@ -14,5 +14,7 @@ namespace Application.BooksCQRS.Commands.UpdateBook
         public DateTime PublishedDate { get; set; }
         public string Category { get; set; }
         public string Publisher { get; set; }
+        public string ImageUrl { get; set; }
+        public string PdfUrl { get; set; }
     }
 }
