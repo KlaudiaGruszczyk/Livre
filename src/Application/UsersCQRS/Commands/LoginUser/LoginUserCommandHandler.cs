@@ -35,7 +35,7 @@ namespace Application.UsersCQRS.Commands.LoginUser
 
             var passwordVerification = BCrypt.Net.BCrypt.Verify(command.Password, user.Password);
 
-            if (!passwordVerification)
+            if (!passwordVerification || !user.IsActivated)
             {
                 return null;
             }

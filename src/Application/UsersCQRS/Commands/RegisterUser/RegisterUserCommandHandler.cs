@@ -10,6 +10,7 @@ using FluentValidation;
 using Application.UsersCQRS.Commands.RegisterUser;
 using System.ComponentModel.DataAnnotations;
 using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
+using Application.Interfaces;
 
 namespace Application.UsersCQRS.Commands.CreateUser
 {
@@ -17,20 +18,22 @@ namespace Application.UsersCQRS.Commands.CreateUser
     {
         private readonly IApplicationDbContext _dbContext;
         private readonly IMediator _mediator;
+        private readonly IEmailService _emailService;
 
 
 
-        public RegisterUserCommandHandler(IApplicationDbContext dbContext, IMediator mediator)
+        public RegisterUserCommandHandler(IApplicationDbContext dbContext, IMediator mediator, IEmailService emailService)
         {
             _dbContext = dbContext;
             _mediator = mediator;
+            _emailService = emailService;
+
         }
 
 
         public async Task<Guid> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             var validator = new RegisterUserCommandValidator(_dbContext);
-
             var validationResult = await validator.ValidateAsync(command, cancellationToken);
 
             if (!validationResult.IsValid)
@@ -38,25 +41,44 @@ namespace Application.UsersCQRS.Commands.CreateUser
                 var errors = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
                 throw new ValidationException(errors);
             }
-            var user = await _dbContext.Users.SingleOrDefaultAsync((item)=> item.Login == command.Login);
-            
-            if (user == null) {
+
+            var user = await _dbContext.Users.SingleOrDefaultAsync((item) => item.Login == command.Login);
+
+            if (user == null)
+            {
                 user = new User()
                 {
                     UserId = Guid.NewGuid(),
                     Login = command.Login,
                     Password = BC.HashPassword(command.Password),
                     Email = command.Email,
-                    Role = UserRole.User
+                    Role = UserRole.User,
+                    IsActivated = false
                 };
 
-
                 await _dbContext.Users.AddAsync(user);
+
+                var activationToken = Guid.NewGuid();
+
+                var activationLink = new ActivationLink
+                {
+                    Id = activationToken,
+                    UserId = user.UserId,
+                    ExpirationDate = DateTime.UtcNow.AddHours(24) 
+                };
+
+                await _dbContext.ActivationLinks.AddAsync(activationLink);
+
                 await _dbContext.SaveChangesAsync(cancellationToken);
+
+                var activationUrl = $"https://frontend-url/activate/{activationToken}"; // front uzupełnić
+                await _emailService.SendEmailAsync(user.Email, "Aktywacja konta", $"Kliknij w link, aby aktywować konto: <a href='{activationUrl}'>{activationUrl}</a>");
+
                 return user.UserId;
             }
-            throw new ArgumentException("User already exits", command.Login);
+
+            throw new ArgumentException("User already exists", command.Login);
         }
-            
+
     }
 }

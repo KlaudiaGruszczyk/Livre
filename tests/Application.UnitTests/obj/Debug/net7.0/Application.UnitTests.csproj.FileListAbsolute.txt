@@ -261,3 +261,6 @@ C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\Minio.dll
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\System.Reactive.dll
 C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\System.Reactive.Linq.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\MailKit.dll
+C:\Users\klaudia\source\repos\Livre\tests\Application.UnitTests\bin\Debug\net7.0\MimeKit.dll
