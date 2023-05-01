@@ -71,7 +71,7 @@ namespace Application.UsersCQRS.Commands.CreateUser
 
                 await _dbContext.SaveChangesAsync(cancellationToken);
 
-                var activationUrl = $"https://frontend-url/activate/{activationToken}"; // front uzupełnić
+                var activationUrl = $"http://localhost:4200/activate/{activationToken}"; // front uzupełnić
                 await _emailService.SendEmailAsync(user.Email, "Aktywacja konta", $"Kliknij w link, aby aktywować konto: <a href='{activationUrl}'>{activationUrl}</a>");
 
                 return user.UserId;
