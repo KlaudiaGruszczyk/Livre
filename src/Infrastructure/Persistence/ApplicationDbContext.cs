@@ -24,6 +24,8 @@ namespace Infrastructure.Persistence
         public DbSet<User> Users { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Library> UsersLibraryItems { get; set; }
+        public DbSet<ActivationLink> ActivationLinks { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

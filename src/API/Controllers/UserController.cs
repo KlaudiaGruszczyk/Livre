@@ -3,6 +3,8 @@ using Application.BooksCQRS.Commands.UpdateBook;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
+using Application.UsersCQRS.Commands.ActivateUser;
+using Application.UsersCQRS.Commands.ActivateUserByAdmin;
 using Application.UsersCQRS.Commands.ChangeEmail;
 using Application.UsersCQRS.Commands.ChangeLogin;
 using Application.UsersCQRS.Commands.ChangePassword;
@@ -75,6 +77,20 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("activate")]
+        public async Task<ActionResult> Activate(ActivateUserCommand command)
+        {
+            await Mediator.Send(command);
+            return Ok();
+        }
+
+        [HttpPost("ActivateUserByAdmin")]
+        public async Task<ActionResult> ActivateUserByAdmin(ActivateUserByAdminCommand command)
+        {
+            await Mediator.Send(command);
+            return Ok();
+        }
+
         [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdateEmail")]
         public async Task<ActionResult> UpdateEmail (ChangeEmailCommand command)
@@ -114,6 +130,8 @@ namespace API.Controllers
             var result = await Mediator.Send(new DeleteUserCommand { UserId = id });
             return Ok(result);
         }
+
+
 
     }
 }

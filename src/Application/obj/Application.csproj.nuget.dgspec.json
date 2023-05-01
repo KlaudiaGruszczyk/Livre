@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[11.2.1, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[11.1.0, )"
@@ -179,6 +183,10 @@
             "FluentAssertions": {
               "target": "Package",
               "version": "[6.10.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             },
             "MediatR": {
               "target": "Package",

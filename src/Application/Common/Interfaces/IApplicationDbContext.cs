@@ -10,6 +10,8 @@ namespace Application.Common.Interfaces
         DbSet<User> Users { get; }
         DbSet<Author> Authors { get; }
         DbSet<Library> UsersLibraryItems { get; }
+
+        DbSet<ActivationLink> ActivationLinks { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         DatabaseFacade Database { get; }
 
