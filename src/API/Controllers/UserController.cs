@@ -1,5 +1,6 @@
 ﻿using Application.BooksCQRS.Commands.DeleteBook;
 using Application.BooksCQRS.Commands.UpdateBook;
+using Application.BooksCQRS.Queries.GetBookById;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
@@ -77,14 +78,23 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("activate")]
-        public async Task<ActionResult> Activate(ActivateUserCommand command)
+        [HttpPost("activate/{token}")]
+        public async Task<IActionResult> Activate([FromRoute] ActivateUserCommand command)
         {
-            await Mediator.Send(command);
-            return Ok();
+            try
+            {
+                await Mediator.Send(command);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                
+                return StatusCode(500, new { error = ex.Message, stackTrace = ex.StackTrace });
+            }
         }
+    
 
-        [HttpPost("ActivateUserByAdmin")]
+    [HttpPost("ActivateUserByAdmin")]
         public async Task<ActionResult> ActivateUserByAdmin(ActivateUserByAdminCommand command)
         {
             await Mediator.Send(command);
