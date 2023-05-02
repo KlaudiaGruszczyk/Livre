@@ -4,6 +4,7 @@ using Application.BooksCQRS.Queries.GetBookById;
 using Application.LibraryCQRS.Queries.GetAllLibraryItems;
 using Application.LibraryCQRS.Queries.GetLibraryItemById;
 using Application.LibraryCQRS.Queries.GetLibraryItemsByBook;
+using Application.UsersCQRS.Commands.ActivateSubscriptionByAdmin;
 using Application.UsersCQRS.Commands.ActivateUser;
 using Application.UsersCQRS.Commands.ActivateUserByAdmin;
 using Application.UsersCQRS.Commands.ChangeEmail;
@@ -94,8 +95,15 @@ namespace API.Controllers
         }
     
 
-    [HttpPost("ActivateUserByAdmin")]
+        [HttpPost("ActivateUserByAdmin")]
         public async Task<ActionResult> ActivateUserByAdmin(ActivateUserByAdminCommand command)
+        {
+            await Mediator.Send(command);
+            return Ok();
+        }
+
+        [HttpPost("ActivateSubscriptionByAdminn")]
+        public async Task<ActionResult> ActivateSubscriptionByAdmin(ActivateSubscriptionByAdminCommand command)
         {
             await Mediator.Send(command);
             return Ok();
