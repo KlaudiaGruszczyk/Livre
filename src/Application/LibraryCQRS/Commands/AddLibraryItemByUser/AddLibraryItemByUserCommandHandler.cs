@@ -21,6 +21,12 @@ namespace Application.LibraryCQRS.Commands.AddLibraryItemByUser
 
             var userId = _userContext.GetUserId();
 
+            var existingItem = await _dbContext.UsersLibraryItems.FirstOrDefaultAsync(x => x.UserId == Guid.Parse(userId));
+            if (existingItem != null)
+            {
+                throw new InvalidOperationException($"User with UserId '{userId}' already has a book assigned.");
+            }
+
             var book = await _dbContext.Books.FirstOrDefaultAsync(b => b.BookId == command.BookId);
             if (book == null)
             {
