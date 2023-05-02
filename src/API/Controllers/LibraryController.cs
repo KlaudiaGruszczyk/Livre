@@ -100,7 +100,6 @@ namespace API.Controllers
         }
 
 
-
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateLibraryItem")]
         public async Task<ActionResult<Guid>> CreateLibraryItem(CreateLibraryItemCommand command)
@@ -121,6 +120,13 @@ namespace API.Controllers
         [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteLibraryItem")]
         public async Task<ActionResult<Guid>> DeleteLibraryItem(Guid id)
+        {
+            var result = await Mediator.Send(new DeleteLibraryItemCommand { LibraryItemId = id });
+            return Ok(result);
+        }
+
+        [HttpDelete("DeleteLibraryItemByUser")]
+        public async Task<ActionResult<Guid>> DeleteLibraryItemByUser(Guid id)
         {
             var result = await Mediator.Send(new DeleteLibraryItemCommand { LibraryItemId = id });
             return Ok(result);
