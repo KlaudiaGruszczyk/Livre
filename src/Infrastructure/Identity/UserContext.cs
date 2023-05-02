@@ -16,6 +16,7 @@ public class UserContext : IUserContext
     }
 
     public string UserId { get; set; }
+    public string Login { get; set; }
 
     public string GetUserId()
     {
@@ -32,5 +33,22 @@ public class UserContext : IUserContext
 
         UserId = decodedToken.Claims.FirstOrDefault(c => c.Type == "Id")?.Value;
         return UserId;
+    }
+
+    public string GetLogin()
+    {
+        var authHeader = httpContextAccessor.HttpContext?.Request.Headers[HeaderNames.Authorization].ToString();
+        if (string.IsNullOrWhiteSpace(authHeader) || !authHeader.StartsWith("Bearer "))
+        {
+            throw new Exception("Invalid Authorization header");
+        }
+
+        var token = authHeader.Substring("Bearer ".Length);
+
+        var handler = new JwtSecurityTokenHandler();
+        var decodedToken = handler.ReadJwtToken(token);
+
+        Login = decodedToken.Claims.FirstOrDefault(c => c.Type == "Login")?.Value; 
+        return Login;
     }
 }

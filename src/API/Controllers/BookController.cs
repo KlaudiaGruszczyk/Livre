@@ -66,7 +66,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
         }
 
-        [Authorize(Roles = "Admin, User, Moderator")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetBookByKeyWord")]
         public async Task<ActionResult> GetBookByKeyWord([FromQuery] string keyWord)
         {

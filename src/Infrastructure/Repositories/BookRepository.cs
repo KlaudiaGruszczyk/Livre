@@ -76,17 +76,18 @@ namespace Infrastructure.Repositories
 
         public List<T> GetBookByKeyWord<T>(string keyWord)
         {
-            var baseQuery = _dbContext.Books
-        .Where(item => item.Title.Contains(keyWord))
-        .Select(item => new GetBookByKeyWordDTO()
-        {
-            Title = item.Title,
-            Description = item.Description,
-            PublishedDate = item.PublishedDate,
-            Category = item.Category,
-            Publisher = item.Publisher
-
-        }).OfType<T>().ToList();
+         var baseQuery = _dbContext.Books
+                .Include(author => author.Author)
+                .Where(item => item.Title.Contains(keyWord) || item.Author.Name.Contains(keyWord))
+                .Select(item => new GetBookByKeyWordDTO()
+                {
+           Title = item.Title,
+           Description = item.Description,
+           PublishedDate = item.PublishedDate,
+           Category = item.Category,
+           Publisher = item.Publisher,
+           AuthorName = item.Author.Name
+       }).OfType<T>().ToList();
 
             return baseQuery;
         }
