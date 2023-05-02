@@ -28,6 +28,7 @@ namespace Infrastructure.Repositories
             var baseQuery = await _dbContext.Books
                 .Select(item => new GetAllBooksDTO()
                 {
+                    BookId = item.BookId,
                     Title = item.Title,
                     Author = item.Author.Name
                 }).ToListAsync();
