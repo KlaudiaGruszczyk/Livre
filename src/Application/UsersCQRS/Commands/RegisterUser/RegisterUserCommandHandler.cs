@@ -53,7 +53,8 @@ namespace Application.UsersCQRS.Commands.CreateUser
                     Password = BC.HashPassword(command.Password),
                     Email = command.Email,
                     Role = UserRole.User,
-                    IsActivated = false
+                    IsActivated = false,
+                    AvatarUrl = "www"
                 };
 
                 await _dbContext.Users.AddAsync(user);

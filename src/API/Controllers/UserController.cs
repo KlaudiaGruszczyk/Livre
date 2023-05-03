@@ -14,6 +14,7 @@ using Application.UsersCQRS.Commands.CreateUser;
 using Application.UsersCQRS.Commands.DeleteUser;
 using Application.UsersCQRS.Commands.LoginUser;
 using Application.UsersCQRS.Commands.UpdateRole;
+using Application.UsersCQRS.Commands.UpdateUserAvatarUrl;
 using Application.UsersCQRS.Queries.GetAllUsers;
 using Application.UsersCQRS.Queries.GetUserByEmail;
 using Application.UsersCQRS.Queries.GetUserById;
@@ -114,6 +115,15 @@ namespace API.Controllers
         public async Task<ActionResult> UpdateEmail (ChangeEmailCommand command)
         {
            
+            return Ok(await Mediator.Send(command));
+        }
+
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, User, Moderator")]
+        [HttpPut("UpdateUserAvatarUrl")]
+        public async Task<ActionResult> UpdateUserAvatarUrl(UpdateUserAvatarUrlCommand command)
+        {
+
             return Ok(await Mediator.Send(command));
         }
 

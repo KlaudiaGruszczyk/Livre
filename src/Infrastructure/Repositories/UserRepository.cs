@@ -60,7 +60,8 @@ namespace Infrastructure.Repositories
                 Login = item.Login,
                 Password = item.Password,
                 Email = item.Email,
-                Role = item.Role
+                Role = item.Role,
+                AvatarUrl = item.AvatarUrl
             }).OfType<T>()
                 .FirstOrDefault();
 
