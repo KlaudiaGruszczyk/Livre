@@ -38,10 +38,10 @@ namespace API.Controllers
             var result = await Mediator.Send(query);
             return Ok(result);
         }
-
-        [Authorize(Roles = "Admin")]
-        [HttpGet("GetAuthorById")]
-        public async Task<ActionResult> GetAuthorById([FromQuery] Guid id)
+        [AllowAnonymous]
+       // [Authorize(Roles = "Admin")]
+        [HttpGet("GetAuthorById/{id}")]
+        public async Task<ActionResult> GetAuthorById([FromRoute] Guid id)
         {
             return Ok(await Mediator.Send(new GetAuthorByIdQuery { Id = id }));
         }

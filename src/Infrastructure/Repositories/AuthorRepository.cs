@@ -24,7 +24,8 @@ namespace Infrastructure.Repositories
         {
             var baseQuery = await _dbContext.Authors
                 .Select(item => new GetAllAuthorsDTO()
-                {
+                { 
+                    AuthorId = item.AuthorId,
                     Name = item.Name
                 }).ToListAsync();
 
