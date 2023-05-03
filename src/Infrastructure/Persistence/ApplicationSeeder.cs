@@ -71,7 +71,9 @@ namespace Infrastructure.Persistence
                     PublishedDate = new DateTime(1597, 01, 01),
                     Category = "Literatura Klasyczna",
                     Publisher = "Dragon",
-                    AuthorId = new Guid("4c857058-91d2-4b7d-90e3-227ceba718a6")
+                    AuthorId = new Guid("4c857058-91d2-4b7d-90e3-227ceba718a6"),
+                     PdfUrl = "www",
+                    ImageUrl = "www"
     },
                 new Book()
                 {
@@ -81,7 +83,9 @@ namespace Infrastructure.Persistence
                     PublishedDate = new DateTime(1999, 01, 01),
                     Category = "Science Fiction",
                     Publisher = "Mag",
-                     AuthorId = new Guid("8a2db2b1-c73c-47b5-b70c-5f7b5cb6e930")
+                    AuthorId = new Guid("8a2db2b1-c73c-47b5-b70c-5f7b5cb6e930"),
+                    PdfUrl = "www",
+                    ImageUrl = "www"
                 }
             };
             return books;
@@ -97,7 +101,10 @@ namespace Infrastructure.Persistence
                     Login = "FirstAdmin",
                     Password = BC.HashPassword("ABC@123abc"),
                     Email = "first.admin@gmail.com",
-                    Role = Domain.Enums.UserRole.Admin
+                    Role = Domain.Enums.UserRole.Admin,
+                    AvatarUrl = "www",
+                    IsActivated= true,
+                    IsSubscriptionActive = true
                 },
                 new User()
                 {
@@ -105,7 +112,10 @@ namespace Infrastructure.Persistence
                     Login = "FirstUser",
                     Password = BC.HashPassword("ABC@123abc"),
                     Email = "first.usern@gmail.com",
-                    Role = Domain.Enums.UserRole.User
+                    Role = Domain.Enums.UserRole.User,
+                    AvatarUrl = "www",
+                    IsActivated= true,
+                    IsSubscriptionActive = true
                 }
             };
             return users;
@@ -119,13 +129,16 @@ namespace Infrastructure.Persistence
                 {
                     AuthorId = new Guid("4c857058-91d2-4b7d-90e3-227ceba718a6"),
                     Name = "William Shakespeare",
-                    Bio = "William Szekspir jest uznawany za najwybitniejszego angielskiego poetę i dramaturga. Jest autorem znanych i wybitnych sztuk, takich jak \"Romeo i Julia\", \"Makbet\" oraz \"Hamlet\". Utwory Williama Szekspira cieszą się niesłabnącą mimo upływu czasu popularnością wśród dorosłych oraz młodzieży, która analizuje jego twórczość podczas zajęć lekcyjnych."
+                    Bio = "William Szekspir jest uznawany za najwybitniejszego angielskiego poetę i dramaturga. Jest autorem znanych i wybitnych sztuk, takich jak \"Romeo i Julia\", \"Makbet\" oraz \"Hamlet\". Utwory Williama Szekspira cieszą się niesłabnącą mimo upływu czasu popularnością wśród dorosłych oraz młodzieży, która analizuje jego twórczość podczas zajęć lekcyjnych.",
+                    PhotoUrl = "www"
                 },
                  new Author ()
                  {
                     AuthorId = new Guid("8a2db2b1-c73c-47b5-b70c-5f7b5cb6e930"),
                     Name = "Neil Gaiman",
-                    Bio = "Neil Gaiman to brytyjski pisarz, powszechnie uważany za jednego z najwybitniejszych żyjących twórców fantastyki. To właśnie z nim najmocniej kojarzy się termin \"urban fantasy\", chociaż sam pisarz nie ogranicza się jedynie do tego gatunku. Jest autorem licznych powieści grozy, fantasy i science-fiction. Do jego najbardziej znanych dzieł należą: \"Nigdziebądź\", \"Gwiezdny pył\" oraz seria \"Sandman\".\r\n"
+                    Bio = "Neil Gaiman to brytyjski pisarz, powszechnie uważany za jednego z najwybitniejszych żyjących twórców fantastyki. To właśnie z nim najmocniej kojarzy się termin \"urban fantasy\", chociaż sam pisarz nie ogranicza się jedynie do tego gatunku. Jest autorem licznych powieści grozy, fantasy i science-fiction. Do jego najbardziej znanych dzieł należą: \"Nigdziebądź\", \"Gwiezdny pył\" oraz seria \"Sandman\".\r\n",
+                    PhotoUrl = "www"
+
                  }
             };
             return authors;

@@ -3,9 +3,11 @@ using Application.AuthorsCQRS.Commands.DeleteAuthor;
 using Application.AuthorsCQRS.Commands.UpdateAuthor;
 using Application.AuthorsCQRS.Commands.UpdateAuthorBio;
 using Application.AuthorsCQRS.Commands.UpdateAuthorName;
+using Application.AuthorsCQRS.Commands.UpdateAuthorPhoto;
 using Application.AuthorsCQRS.Queries.GetAllAuthors;
 using Application.AuthorsCQRS.Queries.GetAuthorById;
 using Application.AuthorsCQRS.Queries.GetAuthorByName;
+using Application.BooksCQRS.Commands.UpdateBookPdfUrl;
 using Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -76,7 +78,14 @@ namespace API.Controllers
 
             return Ok(await Mediator.Send(command));
         }
-        
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        [HttpPut("UpdateAuthorPhotoUrl")]
+        public async Task<ActionResult> UpdateAuthorPhotoUrl(UpdateAuthorPhotoCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HttpPost("CreateAuthor")]

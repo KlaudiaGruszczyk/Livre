@@ -51,7 +51,9 @@ namespace Application.BooksCQRS.Commands.CreateBook
                        {
                             AuthorId = Guid.NewGuid(),
                             Name = command.AuthorName,
-                            Bio = "do uzupełnienia"
+                            Bio = "do uzupełnienia", 
+                            PhotoUrl = "www"
+
                         };
 
                         _dbContext.Authors.AddAsync(author);

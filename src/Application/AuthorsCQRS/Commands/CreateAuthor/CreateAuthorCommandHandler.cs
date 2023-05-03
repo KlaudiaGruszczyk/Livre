@@ -22,12 +22,14 @@ namespace Application.AuthorsCQRS.Commands.CreateAuthor
             {               
                 AuthorId = Guid.NewGuid(),
                 Name = command.Name,
-                Bio = command.Bio
+                Bio = command.Bio,
+                PhotoUrl = command.PhotoUrl
             };
 
             await _dbContext.Authors.AddAsync(author);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return author.AuthorId;
+
 
 
         }

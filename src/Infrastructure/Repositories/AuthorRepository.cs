@@ -40,7 +40,8 @@ namespace Infrastructure.Repositories
             {
                 AuthorId = item.AuthorId,
                 Name = item.Name,
-                Bio = item.Bio
+                Bio = item.Bio,
+                PhotoUrl = item.PhotoUrl
 
             }).OfType<T>()
         .FirstOrDefault();

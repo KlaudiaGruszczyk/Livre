@@ -9,6 +9,8 @@ namespace Domain.Entities
         [AllowNull]
         public string Bio { get; set; }
 
+        public string PhotoUrl { get; set; }
+
         public virtual ICollection<Book> Books { get; set; }
     }
 }
