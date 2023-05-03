@@ -94,7 +94,7 @@ namespace API.Controllers
         [HttpPut("UpdateReadingStatusByUser")]
         public async Task<IActionResult> UpdateReadingStatus([FromBody]UpdateReadingStatusByUserCommand command)
         {
-            await _mediator.Send(command);
+            await Mediator.Send(command);
 
             return NoContent();
         }
