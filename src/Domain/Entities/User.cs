@@ -11,9 +11,12 @@ namespace Domain.Entities
         public UserRole Role { get; set; }
         public bool IsActivated { get; set; }
         public bool IsSubscriptionActive { get; set; }
+
+        public string AvatarUrl { get; set; }
         public virtual ICollection <Library> UserLibrary { get; set; }
+
+        
 
     }
 }
 
-//bool czy ma ważną subskrypcje 

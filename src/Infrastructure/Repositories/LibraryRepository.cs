@@ -86,7 +86,8 @@ namespace Infrastructure.Repositories
                 .Select(item => new GetLibraryItemsByUserDTO()
                 {
                     ReadingStatus = item.ReadingStatus,
-                    Title = item.Book.Title
+                    Title = item.Book.Title,
+                    BookId = item.BookId
                 }).OfType<T>()
                  .ToList();
 

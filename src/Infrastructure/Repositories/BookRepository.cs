@@ -65,7 +65,9 @@ namespace Infrastructure.Repositories
             Description = item.Description,
             PublishedDate = item.PublishedDate,
             Category = item.Category,
-            Publisher = item.Publisher
+            Publisher = item.Publisher,
+            PdfUrl = item.PdfUrl,
+            ImageUrl = item.ImageUrl
 
         }).OfType<T>()
         .FirstOrDefault();
