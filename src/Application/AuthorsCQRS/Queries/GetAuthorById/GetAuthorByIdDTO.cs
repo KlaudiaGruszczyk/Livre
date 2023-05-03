@@ -9,5 +9,7 @@ namespace Application.AuthorsCQRS.Queries.GetAuthorById
         public string Bio { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
     }
 }

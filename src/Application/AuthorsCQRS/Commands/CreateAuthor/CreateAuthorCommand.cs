@@ -6,7 +6,9 @@ namespace Application.AuthorsCQRS.Commands.CreateAuthor
     {
         public string Name { get; set; }
         public string Bio { get; set; }
-
         public string PhotoUrl { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
     }
+
 }

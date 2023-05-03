@@ -7,6 +7,9 @@ namespace Application.AuthorsCQRS.Commands.UpdateAuthor
         public Guid AuthorId { get; set; }
         public string Name { get; set; }
         public string Bio { get; set; }
+        public string PhotoUrl { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
 
     }
 }

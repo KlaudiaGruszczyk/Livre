@@ -53,7 +53,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetAuthorByNameQuery { Name = name }));
         }
 
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+       // [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthor")]
         public async Task<ActionResult> UpdateAuthor(UpdateAuthorCommand command)
         {
@@ -69,6 +70,8 @@ namespace API.Controllers
 
             return Ok(await Mediator.Send(command));
         }
+
+ 
 
         [AllowAnonymous]
         //Authorize(Roles = "Admin")]

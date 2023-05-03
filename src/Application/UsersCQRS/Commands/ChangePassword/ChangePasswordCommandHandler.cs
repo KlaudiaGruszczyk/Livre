@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.UsersCQRS.Commands.ChangeLogin;
 using FluentValidation;
+using Infrastructure.Identity;
 using MediatR;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -9,13 +10,17 @@ namespace Application.UsersCQRS.Commands.ChangePassword
     public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, bool>
     {
         private readonly IApplicationDbContext _dbContext;
-        public ChangePasswordCommandHandler(IApplicationDbContext dbContext)
+        private readonly IUserContext _userContext;
+        public ChangePasswordCommandHandler(IApplicationDbContext dbContext, IUserContext userContext)
         {
             _dbContext = dbContext;
+            _userContext = userContext;
         }
 
         public async Task<bool> Handle(ChangePasswordCommand command, CancellationToken cancellationToken)
         {
+            var userId = _userContext.GetUserId();
+
             var validator = new ChangePasswordCommandValidator();
 
             var validationResult = await validator.ValidateAsync(command, cancellationToken);
@@ -27,7 +32,7 @@ namespace Application.UsersCQRS.Commands.ChangePassword
             }
 
             var user = await _dbContext.Users.FindAsync(command.UserId);
-            if (user == null)
+            if (user == null || user.UserId.ToString() != userId)
             {
                 return false;
             }
