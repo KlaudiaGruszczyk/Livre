@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 
 namespace Application.UsersCQRS.Commands.UpdateUserAvatarUrl
 {

@@ -51,8 +51,8 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("GetUserById")]
-        public async Task<ActionResult> GetUserById([FromQuery] Guid id)
+        [HttpGet("GetUserById/{id}")]
+        public async Task<ActionResult> GetUserById([FromRoute] Guid id)
         {
             return Ok(await Mediator.Send(new GetUserByIdQuery { Id = id }));
         }
