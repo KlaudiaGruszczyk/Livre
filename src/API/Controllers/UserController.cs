@@ -110,7 +110,8 @@ namespace API.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "Admin, User, Moderator")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdateEmail")]
         public async Task<ActionResult> UpdateEmail (ChangeEmailCommand command)
         {
@@ -135,7 +136,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [Authorize(Roles = "Admin, User, Moderator")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdatePassword")]
         public async Task<ActionResult> UpdatePassword(ChangePasswordCommand command)
         {

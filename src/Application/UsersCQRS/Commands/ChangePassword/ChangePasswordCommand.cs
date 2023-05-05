@@ -8,5 +8,16 @@ namespace Application.UsersCQRS.Commands.ChangePassword
         public string Password { get; set; }
 
         public string NewPassword { get; set; }
+        public string ConfirmPassword { get; set; }
+
     }
 }
+//ConfirmPassword
+//:
+//"ABC@123abc123"
+//NewPassword
+//:
+//"ABC@123abc123111"
+//Password
+//:
+//"ABC@123abcaaa"

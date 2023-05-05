@@ -29,10 +29,23 @@ public class UserContext : IUserContext
         var token = authHeader.Substring("Bearer ".Length);
 
         var handler = new JwtSecurityTokenHandler();
-        var decodedToken = handler.ReadJwtToken(token);
+        JwtSecurityToken decodedToken;
+        try
+        {
+            decodedToken = handler.ReadJwtToken(token);
+        }
+        catch (Exception)
+        {
+            throw new Exception("Invalid JWT token");
+        }
 
-        UserId = decodedToken.Claims.FirstOrDefault(c => c.Type == "Id")?.Value;
-        return UserId;
+        var userIdClaim = decodedToken.Claims.FirstOrDefault(c => c.Type == "Id");
+        if (userIdClaim == null)
+        {
+            throw new Exception("Invalid JWT token");
+        }
+
+        return userIdClaim.Value;
     }
 
     public string GetLogin()

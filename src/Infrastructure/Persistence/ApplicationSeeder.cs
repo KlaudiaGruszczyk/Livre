@@ -99,7 +99,7 @@ namespace Infrastructure.Persistence
                 {
                     UserId = new Guid("3a1fba2d-e779-4f4d-a9c4-7e060b74d936"),
                     Login = "FirstAdmin",
-                    Password = BC.HashPassword("ABC@123abc"),
+                    Password = BC.HashPassword("ABC@123abc123"),
                     Email = "first.admin@gmail.com",
                     Role = Domain.Enums.UserRole.Admin,
                     AvatarUrl = "www",
