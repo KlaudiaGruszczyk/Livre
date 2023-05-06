@@ -7,5 +7,6 @@ namespace Application.LibraryCQRS.Commands.UpdateReadingStatusByUser
     {
         public Guid LibraryItemId { get; set; }
         public ReadingStatus ReadingStatus { get; set; }
+        public Guid BookId { get; set; }
     }
 }

@@ -87,7 +87,8 @@ namespace Infrastructure.Repositories
                 {
                     ReadingStatus = item.ReadingStatus,
                     Title = item.Book.Title,
-                    BookId = item.BookId
+                    BookId = item.BookId,
+                    LibraryItemId = item.LibraryItemId,
                 }).OfType<T>()
                  .ToList();
 

@@ -111,7 +111,8 @@ namespace Infrastructure.Repositories
             Description = item.Description,
             PublishedDate = item.PublishedDate,
             Category = item.Category,
-            Publisher = item.Publisher
+            Publisher = item.Publisher,
+            BookId = item.BookId,
 
         }).OfType<T>().ToList();
 
