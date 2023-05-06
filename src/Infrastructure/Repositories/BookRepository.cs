@@ -60,6 +60,7 @@ namespace Infrastructure.Repositories
         .Where(item => item.BookId == id)
         .Select(item => new GetBookByIdDTO()
         {
+            BookId = item.BookId,
             Title = item.Title,
             AuthorName = item.Author.Name,
             Description = item.Description,
@@ -83,6 +84,7 @@ namespace Infrastructure.Repositories
                 .Where(item => item.Title.Contains(keyWord) || item.Author.Name.Contains(keyWord))
                 .Select(item => new GetBookByKeyWordDTO()
                 {
+           BookId = item.BookId,
            Title = item.Title,
            Description = item.Description,
            PublishedDate = item.PublishedDate,

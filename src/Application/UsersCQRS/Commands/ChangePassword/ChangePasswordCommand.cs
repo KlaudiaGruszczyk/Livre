@@ -12,12 +12,3 @@ namespace Application.UsersCQRS.Commands.ChangePassword
 
     }
 }
-//ConfirmPassword
-//:
-//"ABC@123abc123"
-//NewPassword
-//:
-//"ABC@123abc123111"
-//Password
-//:
-//"ABC@123abcaaa"

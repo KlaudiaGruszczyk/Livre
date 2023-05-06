@@ -1,7 +1,8 @@
 ﻿namespace Application.BooksCQRS.Queries.GetBookByKeyWord
 {
     public class GetBookByKeyWordDTO
-    {
+    { 
+        public Guid BookId { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         //[AllowNull]
