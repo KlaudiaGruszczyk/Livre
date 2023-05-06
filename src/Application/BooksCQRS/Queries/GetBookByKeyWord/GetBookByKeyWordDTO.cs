@@ -11,5 +11,6 @@
         public DateTime PublishedDate { get; set; }
         public string Category { get; set; }
         public string Publisher { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }

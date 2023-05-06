@@ -68,7 +68,8 @@ namespace Infrastructure.Repositories
             Category = item.Category,
             Publisher = item.Publisher,
             PdfUrl = item.PdfUrl,
-            ImageUrl = item.ImageUrl
+            ImageUrl = item.ImageUrl,
+            AuthorId = item.AuthorId
 
         }).OfType<T>()
         .FirstOrDefault();
@@ -90,7 +91,9 @@ namespace Infrastructure.Repositories
            PublishedDate = item.PublishedDate,
            Category = item.Category,
            Publisher = item.Publisher,
-           AuthorName = item.Author.Name
+           AuthorName = item.Author.Name,
+           AuthorId = item.AuthorId
+           
        }).OfType<T>().ToList();
 
             return baseQuery;

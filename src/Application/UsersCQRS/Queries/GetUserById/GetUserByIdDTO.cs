@@ -12,5 +12,6 @@ namespace Application.UsersCQRS.Queries.GetUserById
         public UserRole Role { get; set; }
         public string AvatarUrl { get; set; }
 
+
     }
 }
