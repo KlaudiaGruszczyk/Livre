@@ -38,8 +38,9 @@ namespace API.Controllers
             var result = await Mediator.Send(query);
             return Ok(result);
         }
-        [AllowAnonymous]
-       // [Authorize(Roles = "Admin")]
+
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetAuthorById/{id}")]
         public async Task<ActionResult> GetAuthorById([FromRoute] Guid id)
         {
@@ -53,8 +54,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetAuthorByNameQuery { Name = name }));
         }
 
-        [AllowAnonymous]
-       // [Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthor")]
         public async Task<ActionResult> UpdateAuthor(UpdateAuthorCommand command)
         {
@@ -62,8 +63,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthorName")]
         public async Task<ActionResult> UpdateAuthorName(UpdateAuthorNameCommand command)
         {
@@ -72,17 +73,17 @@ namespace API.Controllers
         }
 
  
-
-        [AllowAnonymous]
-        //Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthorBio")]
         public async Task<ActionResult> UpdateAuthorBio(UpdateAuthorBioCommand command)
         {
 
             return Ok(await Mediator.Send(command));
         }
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateAuthorPhotoUrl")]
         public async Task<ActionResult> UpdateAuthorPhotoUrl(UpdateAuthorPhotoCommand command)
         {

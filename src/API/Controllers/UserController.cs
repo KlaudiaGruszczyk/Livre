@@ -80,6 +80,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost("activate/{token}")]
         public async Task<IActionResult> Activate([FromRoute] ActivateUserCommand command)
         {
@@ -94,8 +95,9 @@ namespace API.Controllers
                 return StatusCode(500, new { error = ex.Message, stackTrace = ex.StackTrace });
             }
         }
-    
 
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost("ActivateUserByAdmin")]
         public async Task<ActionResult> ActivateUserByAdmin(ActivateUserByAdminCommand command)
         {
@@ -103,6 +105,8 @@ namespace API.Controllers
             return Ok();
         }
 
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost("ActivateSubscriptionByAdminn")]
         public async Task<ActionResult> ActivateSubscriptionByAdmin(ActivateSubscriptionByAdminCommand command)
         {
@@ -110,8 +114,8 @@ namespace API.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdateEmail")]
         public async Task<ActionResult> UpdateEmail (ChangeEmailCommand command)
         {
@@ -119,8 +123,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdateUserAvatarUrl")]
         public async Task<ActionResult> UpdateUserAvatarUrl(UpdateUserAvatarUrlCommand command)
         {
@@ -128,6 +132,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
+        //[AllowAnonymous]
         [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdateLogin")]
         public async Task<ActionResult> UpdateLogin(ChangeLoginCommand command)
@@ -136,8 +141,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPut("UpdatePassword")]
         public async Task<ActionResult> UpdatePassword(ChangePasswordCommand command)
         {
@@ -153,7 +158,8 @@ namespace API.Controllers
 
             return Ok(await Mediator.Send(command));
         }
-        [Authorize(Roles = "Admin, User, Moderator")]
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<int>> DeleteUser(Guid id)
         {

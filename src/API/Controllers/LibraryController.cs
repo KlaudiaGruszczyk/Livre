@@ -63,8 +63,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetLibraryItemsByBookQuery { Id = bookId }));
         }
 
-        [AllowAnonymous ]
-        //[Authorize(Roles = "User, Admin, Moderator")]
+        //[AllowAnonymous ]
+        [Authorize(Roles = "User, Admin, Moderator")]
         [HttpGet("GetLibraryItemsByUser")]
 
         public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] Guid userId)
@@ -90,7 +90,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize(Roles = "User, Admin, Moderator")]
         [HttpPut("UpdateReadingStatusByUser")]
         public async Task<IActionResult> UpdateReadingStatus([FromBody]UpdateReadingStatusByUserCommand command)
         {
@@ -108,8 +109,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpPost("AddLibraryItemByUser")]
         public async Task<ActionResult<Guid>> AddLibraryItemByUser (AddLibraryItemByUserCommand command)
         {
@@ -125,6 +126,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        //[AllowAnonymous]
+        [Authorize(Roles = "User, Admin, Moderator")]
         [HttpDelete("DeleteLibraryItemByUser")]
         public async Task<ActionResult<Guid>> DeleteLibraryItemByUser(Guid id)
         {
@@ -132,8 +135,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, Moderator, User")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, Moderator, User")]
         [HttpGet("GetLibraryItemsByUserAndStatus")]
         public async Task<ActionResult> GetLibraryItemsByUserAndStatus([FromQuery] Guid userId, [FromQuery] ReadingStatus readingStatus)
         {

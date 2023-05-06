@@ -49,7 +49,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetAllBooksFullInfo")]
         public async Task<ActionResult> GetAllBooksFullInfo()
         {
@@ -58,24 +59,24 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetBookById/{id}")]
         public async Task<ActionResult> GetBookById([FromRoute] Guid id)
         {
             return Ok(await Mediator.Send(new GetBookByIdQuery { Id = id }));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetBookByKeyWord")]
         public async Task<ActionResult> GetBookByKeyWord([FromQuery] string keyWord)
         {
             return Ok(await Mediator.Send(new GetBookByKeyWordQuery { KeyWord = keyWord }));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin, User, Moderator")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetBooksByAuthor/{id}")]
         public async Task<ActionResult> GetBookByAuthor([FromRoute] Guid id)
         {
@@ -89,8 +90,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetBookByCategoryQuery { Category = category }));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBook/{id}")]
         public async Task<ActionResult> UpdateBook([FromRoute] Guid id, [FromBody] UpdateBookCommand command)
         {
@@ -99,20 +100,21 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookPdfUrl")]
         public async Task<ActionResult> UpdateBookPdfUrl(UpdateBookPdfUrlCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
-        [AllowAnonymous]
+
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookImgUrl")]
         public async Task<ActionResult> UpdateBookImageUrl(UpdateBookImageUrlCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
-
 
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookTitle")]
@@ -121,6 +123,7 @@ namespace API.Controllers
 
             return Ok(await Mediator.Send(command));
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookAuthor")]
         public async Task<ActionResult> UpdateBookAuthor( UpdateBookAuthorNameCommand command)
@@ -128,7 +131,6 @@ namespace API.Controllers
            
             return Ok(await Mediator.Send(command));
         }
-
 
         [Authorize(Roles = "Admin")]
         [HttpPut("UpdateBookPublishedDate")]
@@ -161,8 +163,8 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateBook")]
         public async Task<ActionResult<int>> CreateBook(CreateBookCommand command)
         {
@@ -170,8 +172,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteBook/{id}")]
         public async Task<ActionResult<int>> DeleteBook([FromRoute] Guid id)
         {
