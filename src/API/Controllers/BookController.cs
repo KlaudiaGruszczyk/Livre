@@ -75,10 +75,10 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = "Admin, User, Moderator")]
-        [HttpGet("GetBookByAuthor")]
-        public async Task<ActionResult> GetBookByAuthor([FromQuery] string name)
+        [HttpGet("GetBooksByAuthor")]
+        public async Task<ActionResult> GetBookByAuthor([FromQuery] Guid id)
         {
-            return Ok(await Mediator.Send(new GetBookByAuthorQuery { Name = name }));
+            return Ok(await Mediator.Send(new GetBookByAuthorQuery { AuthorId = id }));
         }
 
         [Authorize(Roles = "Admin, User, Moderator")]

@@ -30,7 +30,8 @@ namespace Infrastructure.Repositories
                 {
                     BookId = item.BookId,
                     Title = item.Title,
-                    Author = item.Author.Name
+                    Author = item.Author.Name,
+                    AuthorId = item.AuthorId
                 }).ToListAsync();
 
             return baseQuery.Cast<T>().ToList();
@@ -99,10 +100,10 @@ namespace Infrastructure.Repositories
             return baseQuery;
         }
 
-        public List<T> GetBookByAuthor<T>(string name)
+        public List<T> GetBookByAuthor<T>(Guid authorId)
         {
             var baseQuery = _dbContext.Books
-        .Where(item => item.Author.Name.Contains(name))
+        .Where(item => item.Author.AuthorId == authorId)
         .Select(item => new GetBookByAuthorDTO()
         {
             Title = item.Title,

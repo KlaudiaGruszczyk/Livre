@@ -19,7 +19,7 @@ namespace Application.BooksCQRS.Queries.GetBookByAuthor
         }
         public async Task<List<GetBookByAuthorDTO>> Handle(GetBookByAuthorQuery request, CancellationToken cancellationToken)
         {
-            var baseQuery = _bookRepository.GetBookByAuthor<GetBookByAuthorDTO>(request.Name);
+            var baseQuery = _bookRepository.GetBookByAuthor<GetBookByAuthorDTO>(request.AuthorId);
             return _mapper.Map<List<GetBookByAuthorDTO>>(baseQuery);
         }
     }

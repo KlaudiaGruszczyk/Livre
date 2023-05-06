@@ -4,6 +4,6 @@ namespace Application.BooksCQRS.Queries.GetBookByAuthor
 {
     public class GetBookByAuthorQuery : IRequest<List<GetBookByAuthorDTO>>
     {
-        public string Name { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }
