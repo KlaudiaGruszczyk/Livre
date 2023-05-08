@@ -6206,11 +6206,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\klaudia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\klaudia\\AppData\\Roaming\\NuGet\\NuGet.Config",

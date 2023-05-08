@@ -6492,11 +6492,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\klaudia\\Livre\\src\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Application\\Application.csproj",
+      "projectPath": "C:\\Users\\klaudia\\Livre\\src\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\klaudia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Application\\obj\\",
+      "outputPath": "C:\\Users\\klaudia\\Livre\\src\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\klaudia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6513,8 +6513,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\klaudia\\source\\repos\\Livre\\src\\Domain\\Domain.csproj"
+            "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj"
             }
           }
         }

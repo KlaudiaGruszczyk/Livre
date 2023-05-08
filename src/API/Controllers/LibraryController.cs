@@ -63,8 +63,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new GetLibraryItemsByBookQuery { Id = bookId }));
         }
 
-        //[AllowAnonymous ]
-        [Authorize(Roles = "User, Admin, Moderator")]
+
         [HttpGet("GetLibraryItemsByUser")]
 
         public async Task<ActionResult> GetLibraryItemsByUser([FromQuery] Guid userId)
@@ -90,8 +89,7 @@ namespace API.Controllers
             return Ok(await Mediator.Send(command));
         }
 
-        //[AllowAnonymous]
-        [Authorize(Roles = "User, Admin, Moderator")]
+
         [HttpPut("UpdateReadingStatusByUser")]
         public async Task<IActionResult> UpdateReadingStatus([FromBody]UpdateReadingStatusByUserCommand command)
         {
@@ -109,8 +107,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        //[AllowAnonymous]
-        [Authorize(Roles = "Admin, User, Moderator")]
+
         [HttpPost("AddLibraryItemByUser")]
         public async Task<ActionResult<Guid>> AddLibraryItemByUser (AddLibraryItemByUserCommand command)
         {

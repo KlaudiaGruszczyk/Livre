@@ -49,8 +49,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        //[AllowAnonymous]
-        [Authorize(Roles = "Admin, User, Moderator")]
+
         [HttpGet("GetAllBooksFullInfo")]
         public async Task<ActionResult> GetAllBooksFullInfo()
         {
@@ -59,8 +58,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        //[AllowAnonymous]
-        [Authorize(Roles = "Admin, User, Moderator")]
+
         [HttpGet("GetBookById/{id}")]
         public async Task<ActionResult> GetBookById([FromRoute] Guid id)
         {

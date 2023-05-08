@@ -39,8 +39,6 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        //[AllowAnonymous]
-        [Authorize(Roles = "Admin, User, Moderator")]
         [HttpGet("GetAuthorById/{id}")]
         public async Task<ActionResult> GetAuthorById([FromRoute] Guid id)
         {

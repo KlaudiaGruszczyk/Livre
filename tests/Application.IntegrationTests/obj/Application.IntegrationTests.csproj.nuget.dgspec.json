@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj": {}
+    "C:\\Users\\klaudia\\Livre\\tests\\Application.IntegrationTests\\Application.IntegrationTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj": {
+    "C:\\Users\\klaudia\\Livre\\tests\\Application.IntegrationTests\\Application.IntegrationTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\klaudia\\Livre\\tests\\Application.IntegrationTests\\Application.IntegrationTests.csproj",
+        "projectName": "Application.IntegrationTests",
+        "projectPath": "C:\\Users\\klaudia\\Livre\\tests\\Application.IntegrationTests\\Application.IntegrationTests.csproj",
         "packagesPath": "C:\\Users\\klaudia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\klaudia\\Livre\\tests\\Application.IntegrationTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\klaudia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,61 +40,33 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[11.0.0, )"
             },
             "BCrypt.Net-Core": {
               "target": "Package",
               "version": "[1.6.0, )"
             },
-            "FluentAssertions": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[6.10.0, )"
+              "version": "[17.3.2, )"
             },
-            "MailKit": {
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[3.1.2, )"
             },
-            "MediatR": {
+            "xunit": {
               "target": "Package",
-              "version": "[11.1.0, )"
+              "version": "[2.4.2, )"
             },
-            "MediatR.Contracts": {
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.0.1, )"
-            },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[11.1.0, )"
-            },
-            "Microsoft.AspNetCore.Identity": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.3, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Minio": {
-              "target": "Package",
-              "version": "[4.0.7, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.27.0, )"
+              "version": "[2.4.5, )"
             }
           },
           "imports": [
@@ -109,9 +81,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
