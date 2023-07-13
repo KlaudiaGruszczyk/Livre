@@ -858,19 +858,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kgrus\\.nuget\\packages\\": {}
+    "C:\\Users\\klaudia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\kgrus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kgrus\\Desktop\\LIVRE\\src\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\klaudia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\klaudia\\Livre\\src\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kgrus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\klaudia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -878,6 +878,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -936,7 +937,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
